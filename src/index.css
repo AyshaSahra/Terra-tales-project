@@ -46,3 +46,36 @@
   font-family: 'Pottaone';
   src: url('./fonts/Potta_One/PottaOne-Regular.ttf') format('opentype'),
 }
+
+.Background{
+  background-color: black;
+  opacity:0;
+}
+
+.Background:hover{
+  opacity: 90%;
+  animation-duration: 1000s;
+  animation-name: fadeIn;
+}
+
+.footer-bg{
+  background-image: url('../src/assets/footer.jpg') ;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* For Internet Explorer & Edge */
+body {
+  -ms-overflow-style: none;
+}
