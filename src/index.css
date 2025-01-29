@@ -79,3 +79,14 @@ html {
 body {
   -ms-overflow-style: none;
 }
+
+.home-background{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 2%, rgba(0,0,0,1) 105%), url(/src/assets/homebackground.jpg);
+  background-size: cover;
+  background-position: 70% 42%;
+  background-repeat: no-repeat;
+}
+
+.background-color{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 2%, rgba(0,0,0,1) 105%)
+}
