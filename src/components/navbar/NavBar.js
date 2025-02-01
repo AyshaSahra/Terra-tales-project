@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function NavBar(){
     const navigate = useNavigate();
     return (
-        <nav className='bg-black bg-opacity-[60%] opacity-[100%] w-full h-[100px] overflow-hidden flex items-center absolute'>
+        <nav className='bg-black bg-opacity-[0%] opacity-[100%] w-full h-[100px] overflow-hidden flex items-center absolute'>
             <ul className='flex items-center justify-between w-full pr-11 pl-1'>
                 <ul>
                     <a onClick={() => navigate("/")}>

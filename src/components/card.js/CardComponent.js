@@ -1,46 +1,14 @@
-import React from 'react'
-import NavBar from '../navbar/NavBar'
-import assets from '../../constants/assets'
+import React from 'react';
+import assets from '../../constants/assets';
 
-export default function HomePage() {
-    return (
-        <div>
-            {/*Home screen*/}
-           <div className=' w-full radial-gradient home-background px-10 py-10 h-screen flex flex-col justify-end pb-3 items-start'>
-             <div className='py-9'>
-                <p className='font-Pottaone min-[1440px]:text-7xl text-6xl pb-3 text-white '>
-                    Explore 
-                </p>
-                <p className='font-Pottaone min-[1440px]:text-7xl pl-1 text-6xl text-white'>
-                    Tamil Nadu
-                </p>
-
-             <div>
-                <p className='font-Andika text-white min-[1440px]:text-xl text-lg py-3 w-[55%]'>
-                "Discover a land where ancient history, stunning landscapes, and vibrant culture come together to create unforgettable experiences!"  
-                </p>
-             </div>
-             </div>
-            </div> 
-
-            {/*Destination page*/}
-            <div className='w-full bg-black'>
-                <div className='flex flex-col items-center justify-center'>
-                    <p className='text-white text-5xl font-McLaren text-center pt-3'>
-                        Best Destination
-                    </p>
-                    <p className='font-Andika text-white text-center min-[1440px]:text-lg text-m py-2 w-[45%]'>
-                        "Discover a land where ancient history, stunning landscapes, and vibrant culture come together to create unforgettable experiences!"  
-                    </p>
-                </div>
-
-                {/*Destination cards*/}
-                <div className='w-full px-20 gap-8 py-12'style={{flex:3,flexDirection:'row',display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
+export default function CardComponent(){
+    return(
+        <div className='w-full px-12 gap-6 py-12'style={{flex:3,flexDirection:'row',display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
                     {/*Column 1*/}
                     <div className='w-full flex flex-col gap-6'>
-                    <div className='bg-black full'> {/**/}
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col px-4 py-4 rounded-[37px] mt-2 hover:py-12'>
+                    <div className='bg-black full'>
+                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2'style={{backgroundImage:`url(${assets.image})`}}>
+                            <div className='w-full h-[178px] bg-black opacity-[80%] flex flex-col px-4 py-2 rounded-[37px] mb-2'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -53,15 +21,6 @@ export default function HomePage() {
                                     <p className='text-white text-sm font-Andika mx-1'>
                                         Lorem
                                     </p>
-                                </div>
-                                
-                                <div className='w-full h-full py-9 flex flex-col items-center opacity-0 hover:opacity-100'>
-                                    <p className='text-white text-sm font-Andika mx-6 text-left mb-10'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold text-m  rounded-full px-3 py-2 pt-1'>
-                                        Explore more
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -174,8 +133,5 @@ export default function HomePage() {
                     </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
     )
 }
