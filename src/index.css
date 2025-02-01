@@ -81,7 +81,7 @@ body {
 }
 
 .home-background{
-  background: linear-gradient(180deg, rgba(0,0,0,0) 2%, rgba(0,0,0,1) 105%), url(/src/assets/homebackground.jpg);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), url(/src/assets/homebackground.jpg);
   background-size: cover;
   background-position: 70% 42%;
   background-repeat: no-repeat;
@@ -89,4 +89,11 @@ body {
 
 .background-color{
   background: linear-gradient(180deg, rgba(0,0,0,0) 2%, rgba(0,0,0,1) 105%)
+}
+
+.itinerary-home{
+  background: linear-gradient(0deg, rgba(0,0,0,1), rgba(0, 0, 0, 0.245) 50%, rgba(0,0,0,1)), url(/src/assets/itinerary-home.jpg);
+  background-size: cover;
+  background-position: 70% 42%;
+  background-repeat: no-repeat;
 }

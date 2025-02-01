@@ -5,7 +5,7 @@ import assets from '../../constants/assets'
 export default function HomePage() {
     return (
         <div>
-            {/*Home screen*/}
+            {/*HOME SCREEN*/}
            <div className=' w-full radial-gradient home-background px-10 py-10 h-screen flex flex-col justify-end pb-3 items-start'>
              <div className='py-9'>
                 <p className='font-Pottaone min-[1440px]:text-7xl text-6xl pb-3 text-white '>
@@ -23,7 +23,7 @@ export default function HomePage() {
              </div>
             </div> 
 
-            {/*Destination page*/}
+            {/*DESTINATION PART*/}
             <div className='w-full bg-black'>
                 <div className='flex flex-col items-center justify-center'>
                     <p className='text-white text-5xl font-McLaren text-center pt-3'>
@@ -35,12 +35,13 @@ export default function HomePage() {
                 </div>
 
                 {/*Destination cards*/}
-                <div className='w-full px-20 gap-8 py-12'style={{flex:3,flexDirection:'row',display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
+                <div className='w-full px-20 gap-9 min-[1440px]:px-32 py-16'style={{flex:3,flexDirection:'row',display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
                     {/*Column 1*/}
-                    <div className='w-full flex flex-col gap-6'>
-                    <div className='bg-black full'> {/**/}
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col px-4 py-4 rounded-[37px] mt-2 hover:py-12'>
+                    <div className='w-full flex flex-col  gap-7'>
+                        {/*Card 1*/}
+                    <div className='bg-black full'>
+                        <div className='h-[500px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image1})`}}>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -55,21 +56,22 @@ export default function HomePage() {
                                     </p>
                                 </div>
                                 
-                                <div className='w-full h-full py-9 flex flex-col items-center opacity-0 hover:opacity-100'>
-                                    <p className='text-white text-sm font-Andika mx-6 text-left mb-10'>
+                                
+                                    <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold text-m  rounded-full px-3 py-2 pt-1'>
-                                        Explore more
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                        Explore more 
                                     </button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
 
-                    <div className='bg-black w-full'>
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-[178px] bg-black opacity-[80%] flex flex-col px-4 py-2 rounded-[37px] mb-2'>
+                    {/*Card 2*/}
+                    <div className='bg-black full'>
+                        <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image2})`}}>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -83,6 +85,15 @@ export default function HomePage() {
                                         Lorem
                                     </p>
                                 </div>
+                                
+                                
+                                    <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    </p>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                        Explore more 
+                                    </button>
+                                
                             </div>
                         </div>
                     </div>
@@ -90,9 +101,10 @@ export default function HomePage() {
 
                     {/*Column 2*/}
                     <div className='w-full flex flex-col gap-6'>
-                    <div className='bg-black w-full'>
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-[178px] bg-black opacity-[80%] flex flex-col px-4 py-2 rounded-[37px] mb-2'>
+                        {/*Card 3*/}
+                        <div className='bg-black full'>
+                        <div className='h-[340px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image2})`}}>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -106,13 +118,23 @@ export default function HomePage() {
                                         Lorem
                                     </p>
                                 </div>
+                                
+                                
+                                    <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    </p>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                        Explore more 
+                                    </button>
+                                
                             </div>
                         </div>
-                    </div>
+                        </div>
 
-                    <div className='bg-black w-full'>
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-[178px] bg-black opacity-[80%] flex flex-col px-4 py-2 rounded-[37px] mb-2'>
+                    {/*Card 4*/}
+                    <div className='bg-black full'>
+                        <div className='h-[510px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image4})`}}>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -126,6 +148,15 @@ export default function HomePage() {
                                         Lorem
                                     </p>
                                 </div>
+                                
+                                
+                                    <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    </p>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                        Explore more 
+                                    </button>
+                                
                             </div>
                         </div>
                     </div>
@@ -133,9 +164,10 @@ export default function HomePage() {
 
                     {/*Column 3*/}
                     <div className='w-full flex flex-col gap-6'>
-                    <div className='bg-black w-full'>
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-[178px] bg-black opacity-[80%] flex flex-col px-4 py-2 rounded-[37px] mb-2'>
+                        {/*Card 5*/}
+                        <div className='bg-black full'>
+                        <div className='h-[500px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image1})`}}>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -149,13 +181,23 @@ export default function HomePage() {
                                         Lorem
                                     </p>
                                 </div>
+                                
+                                
+                                    <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    </p>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                        Explore more 
+                                    </button>
+                                
                             </div>
                         </div>
                     </div>
-
-                    <div className='bg-black w-full'>
-                        <div className='h-[520px] rounded-[37px] bg-cover bg-center background opacity-[90%] flex justify-center items-end px-2'style={{backgroundImage:`url(${assets.image})`}}>
-                            <div className='w-full h-[178px] bg-black opacity-[80%] flex flex-col px-4 py-2 rounded-[37px] mb-2'>
+                    
+                    {/*Card 6*/}
+                    <div className='bg-black full'> {/**/}
+                    <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image2})`}}>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     Lorem ipsum 
@@ -169,11 +211,36 @@ export default function HomePage() {
                                         Lorem
                                     </p>
                                 </div>
+                                
+                                
+                                    <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    </p>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                        Explore more 
+                                    </button>
+                                
                             </div>
                         </div>
                     </div>
                     </div>
                 </div>
+
+                <div className='w-full flex justify-center pb-12'>
+                    <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
+                        See more
+                    </button>
+                </div>
+            </div>
+
+            {/*ITINERARY PART*/}
+            <div className='h-screen w-full itinerary-home' >
+
+            </div>
+
+            {/*HIDDEN SPOTS*/}
+            <div className='w-full h-screen bg-black'>
+
             </div>
 
         </div>
