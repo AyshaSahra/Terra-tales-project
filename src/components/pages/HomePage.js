@@ -1,6 +1,9 @@
 import React from 'react'
 import NavBar from '../navbar/NavBar'
 import assets from '../../constants/assets'
+import FooterElement from '../footer/FooterElement'
+import ExampleCard from '../card.js/ExampleCard'
+
 
 export default function HomePage() {
     return (
@@ -235,7 +238,19 @@ export default function HomePage() {
 
             {/*ITINERARY PART*/}
             <div className='h-screen w-full itinerary-home' >
+            <div className='flex flex-col items-center justify-center'>
+                    <p className='text-white text-5xl font-McLaren text-center pt-6'>
+                        Plan your Adventure
+                    </p>
+                    <p className='font-Andika text-white text-center min-[1440px]:text-lg text-m py-2 w-[45%]'>
+                        "Explore every corner of Tamil Nadu with our custom itineraries!"
+                    </p>
+            </div>
 
+                {/*Itinerary cards*/}
+                <div>
+                    <ExampleCard/>
+                </div>
             </div>
 
             {/*HIDDEN SPOTS*/}
