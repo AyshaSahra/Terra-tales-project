@@ -7,7 +7,7 @@ export default function DestinationPage() {
                     Destination
             </p>
             <p className='font-Andika text-white min-[1440px]:text-xl text-center text-lg py-3 w-[55%]'>
-                "Discover a land where ancient history, stunning landscapes, and vibrant culture come together to create unforgettable experiences!"  
+                "Discover a land where ancient history, stunning landscapes, and vibrant culture come together to create unforgettable experiences!!"  
             </p>    
 
         </div>
