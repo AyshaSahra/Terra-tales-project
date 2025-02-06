@@ -9,6 +9,8 @@ import image3 from '../assets/abdul-muiz-khan-A4mm5pT4mL8-unsplash.jpg'
 import image4 from '../assets/abdullah-azeez-3C2geGfFfL4-unsplash.jpg'
 import image5 from '../assets/abhinav-0VncAP1HQLk-unsplash.jpg'
 import image6 from '../assets/adityan-ramkumar-l3XmS2cBAkU-unsplash.jpg'
+import img from '../assets/img.jpg'
+import google_icon from '../assets/google.png' 
 
 export default{
     heart,
@@ -22,4 +24,6 @@ export default{
     image4,
     image5,
     image6,
+    img,
+    google_icon,
 }

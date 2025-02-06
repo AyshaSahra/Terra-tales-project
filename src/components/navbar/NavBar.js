@@ -1,6 +1,9 @@
 import React from 'react';
 import assets from '../../constants/assets'
 import { useNavigate } from 'react-router-dom';
+import {BrowserRouter, Route, Routes } from 'react-router-dom';
+import HiddenSpot from '../pages/HiddenSpot';
+import ProfilePage from '../profile/SignUp';
 
 export default function NavBar(){
     const navigate = useNavigate();
@@ -49,11 +52,12 @@ export default function NavBar(){
                             <img src={assets.white_heart} className='h-7 w-7 cursor-pointer'/>
                         </a>
 
-                        <a onClick={() => navigate("/profile")}>
+                        <a onClick={() => navigate("/SignUp")}>
                             <img src={assets.profile} className='h-7 w-7 cursor-pointer'/>
                         </a>
                     </li>
                 </ul>
+                
             </ul>
         </nav>
     )

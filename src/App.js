@@ -4,17 +4,25 @@ import HomePage from './components/pages/HomePage';
 import NavBar from './components/navbar/NavBar';
 import FooterElement from './components/footer/FooterElement';
 import DestinationPage from './components/pages/DestinationPage';
+import HiddenSpot from './components/pages/HiddenSpot';
+import ItineraryPage from './components/pages/ItineraryPage';
+import SignUp from './components/profile/SignUp';
+import LoginPage from './components/profile/loginPage';
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      
           <Routes>
             <Route path="/" element={<HomePage/>} />
             <Route path="/destination" element={<DestinationPage/>} />
+            <Route path="/hidden-spot" element={<HiddenSpot/>} />
+            <Route path="/itinerary" element={<ItineraryPage/>} />
+            <Route path="/forum" element={<HiddenSpot/>} />
+            <Route path="/favourite" element={<HiddenSpot/>} />
+            <Route path="/SignUp" element={<SignUp/>} />
+            <Route path='/login' element={<LoginPage/>}/>
           </Routes>
-      
-      <FooterElement/>
     </div>
   );
 }

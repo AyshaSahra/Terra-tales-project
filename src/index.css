@@ -104,3 +104,30 @@ body {
   background-position: 70% 42%;
   background-repeat: no-repeat;
 }
+
+.hidden-background{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), url(/src/assets/hidden-spot.jpg);
+  background-size: cover;
+  background-position: 70% 80%;
+  background-repeat: no-repeat;
+}
+
+.itinerary-background{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), url(/src/assets/itinerary.jpg);
+  background-size: cover;
+  background-position: 70% 80%;
+  background-repeat: no-repeat;
+}
+
+.profile-background{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), url(/src/assets/login.jpg);
+  background-size: cover;
+  background-position: 70% 80%;
+  background-repeat: no-repeat;
+}
+
+.glass-effect{
+    border: 0.5px transparent rgb(58, 58, 58);
+    box-shadow: 0 0 10px rgb(46, 46, 46);
+    backdrop-filter: blur(30px);
+}
