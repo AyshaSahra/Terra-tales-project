@@ -28,7 +28,9 @@ export default function LoginPage() {
 
                <div className='w-full flex justify-center pt-5'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-base w-fit rounded-full px-8 py-2 pt-1'>
-                        Sign up
+                    <a onClick={() => navigate("/")}>
+                            Sign up
+                        </a>
                     </button>
                 </div>
                 <p className="text-white font-McLaren text-xs pt-[15px]">
