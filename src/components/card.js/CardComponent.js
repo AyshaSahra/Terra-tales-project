@@ -33,7 +33,7 @@ export default function CardComponent(){
                                 
                             </div>
                         </div>
-                    </div>           
+            </div>           
         </div>
     )
 }

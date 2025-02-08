@@ -6,38 +6,7 @@ import ExampleCard from '../card.js/ExtendableCard'
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
-
-const cards = [
-  {
-    title: "Lorem Ipsum",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
-    button: "Explore",
-    image: assets.image1,
-    favicon:assets.heart,
-    location:assets.location,
-  },
-  { title: "Lorem Ipsum",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
-    button: "Explore",
-    image: assets.image2, 
-    favicon:assets.heart,
-    location:assets.location,
-  },
-  { title: "Lorem Ipsum",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
-    button: "Explore",
-    image: assets.image3,
-    favicon:assets.heart,
-    location:assets.location,
- },
-  { title: "Lorem Ipsum",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
-    button: "Explore",
-    image: assets.image4,
-    favicon:assets.heart,
-    location:assets.location,
- },
-];
+import cards from '../../constants/cards'
 
 export default function HomePage() {
     const [selected, setSelected] = useState(0);
@@ -289,8 +258,9 @@ export default function HomePage() {
             </div>
 
                 {/*Itinerary cards*/}
-                
+                <div className='mx-20 flex justify-center items-center'>
                 <ExampleCard/>
+                </div>
 
                 <div className='w-full flex justify-center pb-10'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-base w-fit rounded-full px-6 py-2 pt-1'>
@@ -302,7 +272,7 @@ export default function HomePage() {
             </div>
 
             {/*HIDDEN SPOTS*/}
-            <div className='w-full h-screen bg-black'>
+            <div className='w-full bg-black'>
             
             <div className='flex flex-col items-center justify-center'>
                     <p className='text-white text-4xl font-McLaren text-center pt-6'>
@@ -314,19 +284,20 @@ export default function HomePage() {
             </div>
 
                 {/*Hidden gems cards*/}
-                <div className='flex gap-6 flex-row items-center p-7'>
+                <div className='w-full bg-black'>
+                <div className='flex gap-8 flex-row items-center p-7 mx-14 overflow-scroll'>
                     {cards.map((card,index) =>(
                       <div>
-                        <div className='h-[420px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.image})`}}>
+                        <div className='w-[350px] h-[470px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.src})`}}>
                         <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                         <div className='flex flex-row h-fit w-full items-center px-2 pt-3'>
                            <p className='text-white text-2xl font-Salsa'>
                                     {card.title}
                             </p>
-                            <img src={card.favicon} alt='location' className='w-6 h-6 ml-auto mx-2'/> 
+                            <img src={card.heart_icon} alt='location' className='w-6 h-6 ml-auto mx-2'/> 
                         </div>
                         <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
-                            <img src={card.location} className='w-[18px] h-[18px]'/>
+                            <img src={card.location_icon} className='w-[18px] h-[18px]'/>
                             <p className='text-white text-sm font-Andika mx-1'>
                                 Lorem
                             </p>
@@ -342,13 +313,14 @@ export default function HomePage() {
                       </div>  
                     ))}
                 </div>
-                <div className='w-full flex justify-center pb-10'>
+                <div className='w-full flex justify-center py-7'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
                     <a onClick={() => navigate("/hidden-spot")}>
                             Explore
                         </a>
                     </button>
                 </div>
+            </div>
             </div>
             <FooterElement/>
         </div>

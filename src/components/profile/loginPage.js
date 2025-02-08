@@ -15,14 +15,14 @@ export default function LoginPage() {
                     <p className="font-McLaren text-base text-white py-2">
                         Email address:
                     </p>
-                    <input type="text" placeholder="Email address..." className="p-3 py-2 text-sm font-mono rounded-lg w-full focus:outline-none"/>
+                    <input type="email" placeholder="Email address..." className="p-3 py-2 text-sm font-mono rounded-lg w-full focus:outline-none"/>
                 </div>
 
                 <div className=" w-full h-fit px-4">
                     <p className="font-McLaren text-base text-white py-2">
                         Password:
                     </p>
-                    <input type="text" placeholder="Password..." className="p-3 py-2 text-sm font-mono rounded-lg w-full focus:outline-none"/>
+                    <input type="password" placeholder="Password..." className="p-3 py-2 text-sm font-mono rounded-lg w-full focus:outline-none"/>
                 </div>
                </div>
 
@@ -36,7 +36,7 @@ export default function LoginPage() {
                 <p className="text-white font-McLaren text-xs pt-[15px]">
                     Don't  have an account <a onClick={() => navigate("/SignUp")}
                             className='underline font-bold cursor-pointer'>
-                            Sign up
+                            Login
                         </a> 
                 </p>
 

@@ -11,6 +11,7 @@ import image5 from '../assets/abhinav-0VncAP1HQLk-unsplash.jpg'
 import image6 from '../assets/adityan-ramkumar-l3XmS2cBAkU-unsplash.jpg'
 import img from '../assets/img.jpg'
 import google_icon from '../assets/google.png' 
+import search from '../assets/search-icon.png'
 
 export default{
     heart,
@@ -26,4 +27,5 @@ export default{
     image6,
     img,
     google_icon,
+    search,
 }
