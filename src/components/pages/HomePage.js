@@ -313,7 +313,7 @@ export default function HomePage() {
                       </div>  
                     ))}
                 </div>
-                <div className='w-full flex justify-center py-7'>
+                <div className='w-full flex justify-center py-75'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
                     <a onClick={() => navigate("/hidden-spot")}>
                             Explore

@@ -131,3 +131,10 @@ body {
     box-shadow: 0 0 10px rgb(46, 46, 46);
     backdrop-filter: blur(30px);
 }
+
+.favourite-background{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), url(/src/assets/favourite.jpg);
+  background-size: cover;
+  background-position: 70% 80%;
+  background-repeat: no-repeat;
+}

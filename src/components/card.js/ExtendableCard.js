@@ -8,12 +8,12 @@ export default function ExtendableCard(){
 
   const [selected, setSelected] = useState(0);
     return(
-      <div className="flex flex-col flex-wrap gap-4 p-9 mx-10 w-full justify-center items-center overflow-x-scroll h-[420px]">
+      <div className="flex flex-col flex-wrap gap-4 p-9 mx-24 w-full justify-center items-center overflow-x-scroll h-[420px]">
                     {cards.map((card, index) => (
                         <motion.div
                         key={index}
                         className="relative rounded-[50px] overflow-hidden cursor-pointer"
-                        animate={{ width: selected === index ? "375px" : "110px", height: '376px' }}
+                        animate={{ width: selected === index ? "375px" : "117px", height: '376px' }}
                         transition={{ type:'tween', stiffness: 0, damping: 20 }}
                         onClick={() => setSelected(index)}
                     >

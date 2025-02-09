@@ -8,6 +8,7 @@ import HiddenSpot from './components/pages/HiddenSpot';
 import ItineraryPage from './components/pages/ItineraryPage';
 import SignUp from './components/profile/SignUp';
 import LoginPage from './components/profile/loginPage';
+import FavouritePage from './components/pages/FavouritesPage';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
             <Route path="/hidden-spot" element={<HiddenSpot/>} />
             <Route path="/itinerary" element={<ItineraryPage/>} />
             <Route path="/forum" element={<HiddenSpot/>} />
-            <Route path="/favourite" element={<HiddenSpot/>} />
+            <Route path="/favourite" element={<FavouritePage/>} />
             <Route path="/SignUp" element={<SignUp/>} />
             <Route path='/login' element={<LoginPage/>}/>
           </Routes>
