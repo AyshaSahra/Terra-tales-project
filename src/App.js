@@ -9,6 +9,8 @@ import ItineraryPage from './components/pages/ItineraryPage';
 import SignUp from './components/profile/SignUp';
 import LoginPage from './components/profile/loginPage';
 import FavouritePage from './components/pages/FavouritesPage';
+import DestinationLanding from './components/landinga pages/DestinationLanding'
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
             <Route path="/favourite" element={<FavouritePage/>} />
             <Route path="/SignUp" element={<SignUp/>} />
             <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/place-landing' element={<DestinationLanding/>}/>
           </Routes>
     </div>
   );
