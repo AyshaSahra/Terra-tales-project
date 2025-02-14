@@ -145,3 +145,13 @@ body {
   background-position: 70% 80%;
   background-repeat: no-repeat;
 }
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent image from affecting layout flow */
+.fixed {
+  pointer-events: none;
+}

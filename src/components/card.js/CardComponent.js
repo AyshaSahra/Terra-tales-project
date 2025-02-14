@@ -7,7 +7,7 @@ import cards from '../../constants/cards';
 export default function CardComponent(){
     const navigate = useNavigate()
     return(
-        <div >
+        <div>
         <div className='w-full h-[1515px] overflow-y-hidden px-7 gap-6 py-9 flex flex-wrap items-start justify-center'>
                 {cards.map((image, index) => (
                     <motion.div

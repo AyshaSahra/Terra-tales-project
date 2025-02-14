@@ -26,7 +26,7 @@ export default function DestinationPage() {
             </div>
             {/*Destination card component*/}
             <div className='w-full bg-black p-16'>
-            <CardComponent/>
+                <CardComponent/>
             </div>
             {/*hidden spots*/}
             <div className='w-full bg-black'>

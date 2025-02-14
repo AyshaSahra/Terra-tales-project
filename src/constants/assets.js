@@ -12,6 +12,7 @@ import image6 from '../assets/adityan-ramkumar-l3XmS2cBAkU-unsplash.jpg'
 import img from '../assets/img.jpg'
 import google_icon from '../assets/google.png' 
 import search from '../assets/search-icon.png'
+import beach from '../assets/beach.jpg'
 
 export default{
     heart,
@@ -28,4 +29,5 @@ export default{
     img,
     google_icon,
     search,
+    beach,
 }
