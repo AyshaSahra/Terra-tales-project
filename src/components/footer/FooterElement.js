@@ -5,7 +5,7 @@ export default function FooterElement() {
     const navigate = useNavigate();
     return (
         <footer>
-            <nav className='footer-bg z-50 w-full flex items-center '>
+            <nav className='footer-bg w-full flex items-center absolute' style={{zIndex: 55}}>
                 <ul className="flex flex-row items-center justify-between w-full px-12">
                     <ul className="pl-5">
                         <a onClick={() => navigate("/")}>

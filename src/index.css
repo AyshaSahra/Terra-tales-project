@@ -146,6 +146,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.landing-bg{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), url(/src/assets/anees-ahmed-NP81VnMqAj4-unsplash.jpg);
+  background-size: cover;
+  background-position: 70% 80%;
+  background-repeat: no-repeat;
+}
+
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
@@ -155,3 +162,4 @@ html {
 .fixed {
   pointer-events: none;
 }
+

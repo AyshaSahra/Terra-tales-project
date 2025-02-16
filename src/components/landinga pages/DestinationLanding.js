@@ -23,7 +23,7 @@ export default function DestinationPage() {
     
     // Calculate final position
     const finalTop = 64;
-    const finalRight = window.innerWidth - (window.innerWidth * 0.003) + 150;
+    const finalRight = window.innerWidth - (window.innerWidth * 0.000051) + 320;
     
     // Transform calculations
     const scale = 1 - (progress * 0.5);
@@ -60,7 +60,7 @@ export default function DestinationPage() {
       {/* First Section with Parallax Image */}
       <div className="h-screen relative bg-black overflow-hidden">
         <div style={calculateImageStyle()} />
-        <NavBar className='fixed z-50'/>
+        <NavBar/>
         <div className="relative h-full flex items-end justify-start">
           <div className="text-white text-center p-8 bg-opacity-30 rounded-lg" style={{ zIndex: 20 }}>
             <p className='font-Pottaone min-[1440px]:text-7xl text-5xl pb-3 text-white'>
@@ -77,7 +77,7 @@ export default function DestinationPage() {
       </div>
 
       {/* Second Section */}
-      <div className="min-h-screen  bg-black backdrop-blur-sm p-12 relative" style={{ zIndex: 2 }}>
+      <div className="h-screen  bg-black backdrop-blur-sm p-12 relative" style={{ zIndex: 2 }}>
         <div className="max-w-[50%] py-10 ml-8 h-fit text-white p-8">
         <div className="text-white p-8 bg-opacity-30 rounded-lg" style={{ zIndex: 20 }}>
             <div className='flex flex-col justify-start w-full'>
@@ -92,11 +92,19 @@ export default function DestinationPage() {
             </div>
             </div>
         </div>
-          <p className="font-Ubuntu text-2xl text-white">
+          <p className="font-Ubuntu text-2xl text-white" >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
             nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
+        </div>
+      </div>
+      {/*Section 3 */}
+      <div className='bg-black h-screen w-full justify-center flex items-center' style={{ zIndex: 2 }}>
+        <div className='bg-slate-500 w-fit h-fit bg-opacity-5 rounded-[35px]'>
+          <div className='flex flex-col bg-transparent glass-effect w-[590px] h-[153px] rounded-[35px] p-12 justify-center items-center'>
+            
+          </div>
         </div>
       </div>
       <FooterElement/>
