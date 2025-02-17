@@ -13,6 +13,9 @@ import img from '../assets/img.jpg'
 import google_icon from '../assets/google.png' 
 import search from '../assets/search-icon.png'
 import beach from '../assets/beach.jpg'
+import weather from '../assets/weather oppo.svg'
+import line from '../assets/Line.svg'
+import location_card from '../assets/location card.jpg'
 
 export default{
     heart,
@@ -30,4 +33,7 @@ export default{
     google_icon,
     search,
     beach,
+    weather,
+    line,
+    location_card,
 }

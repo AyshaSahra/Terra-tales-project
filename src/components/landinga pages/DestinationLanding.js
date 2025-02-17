@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import assets from '../../constants/assets';
 import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
+import cards from '../../constants/cards';
+import { useNavigate } from 'react-router-dom';
 
 export default function DestinationPage() {
+  const navigate = useNavigate()
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -100,13 +103,97 @@ export default function DestinationPage() {
         </div>
       </div>
       {/*Section 3 */}
-      <div className='bg-black h-screen w-full justify-center flex items-center' style={{ zIndex: 2 }}>
-        <div className='bg-slate-500 w-fit h-fit bg-opacity-5 rounded-[35px]'>
-          <div className='flex flex-col bg-transparent glass-effect w-[590px] h-[153px] rounded-[35px] p-12 justify-center items-center'>
-            
+      <div className='bg-black h-screen w-full justify-center flex flex-col items-start p-2' style={{ zIndex: 2 }}>
+        <div className='w-full h-fit items-center justify-center flex' style={{flex:1}}>
+        <div className='linear-weather w-fit h-fit bg-opacity-5 rounded-[35px]'>
+          <div className='flex flex-col bg-transparent glass-effect  rounded-[35px] p-4 justify-center items-center'>
+            <div className='flex flex-row w-full h-full'>
+            <div className='flex flex-col justify-center items-center w-full  px-16 py-1' style={{flex:2}}>
+              <img src={assets.weather} className='w-[140px] h-[98px] '/>
+              <p className='text-base font-Andika text-white py-1'>
+                Partly Cloudy
+              </p>
+            </div>
+            <div className='flex items-center justify-center' style={{flex:0.2}}>
+              <img src={assets.line} className='h-[116px]'/>
+            </div>
+            <div className=' w-full flex flex-col items-center justify-center px-16 py-1' style={{flex:2}}>
+              <div className='w-full'>
+              <p className='text-[15px] text-white font-UbuntuBold uppercase text-nowrap py-1'>
+                Chennai, Tamil Nadu
+              </p>
+              <p className='text-[12px] text-white font-Andika'>
+                Monday
+              </p>
+              <p className='text-[34px] font-bold text-white font-salsa'>
+              22°C
+              </p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div className=' w-full flex flex-row' style={{flex:2}}>
+          <div  className='w-full flex justify-center items-center p-2' style={{flex:1}}>
+            <img src={assets.location_card} className='w-[441px] h-[362px] rounded-2xl'/>
+          </div>
+          <div className='w-full flex justify-center items-center p-2' style={{flex:1}}>
+
           </div>
         </div>
       </div>
+      {/* Section 4*/}
+      <div className='w-full bg-black'>
+            
+            <div className='flex flex-col items-center justify-center'>
+                    <p className='text-white text-4xl font-McLaren text-center pt-6'>
+                        Hidden Gems
+                    </p>
+                    <p className='font-Andika text-white text-center min-[1440px]:text-base text-m py-2 w-[45%]'>
+                        "Unlock the unknown"
+                    </p>
+            </div>
+
+                {/*Hidden gems cards*/}
+                <div className='w-full bg-black'>
+                <div className='flex gap-8 flex-row items-center p-7 mx-14 overflow-scroll'>
+                    {cards.map((card,index) =>(
+                      <div>
+                        <div className='w-[350px] h-[470px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.src})`}}>
+                        <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
+                        <div className='flex flex-row h-fit w-full items-center px-2 pt-3'>
+                           <p className='text-white text-2xl font-Salsa'>
+                                    {card.title}
+                            </p>
+                            <img src={card.heart_icon} alt='location' className='w-6 h-6 ml-auto mx-2'/> 
+                        </div>
+                        <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
+                            <img src={card.location_icon} className='w-[18px] h-[18px]'/>
+                            <p className='text-white text-sm font-Andika mx-1'>
+                                Lorem
+                            </p>
+                         </div>
+                         <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                            {card.text}           
+                        </p>
+                            <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                {card.button} 
+                            </button>
+                        </div>
+                        </div>
+                      </div>  
+                    ))}
+                </div>
+                <div className='w-full flex justify-center py-75'>
+                    <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
+                    <a onClick={() => navigate("/hidden-spot")}>
+                            Explore
+                        </a>
+                    </button>
+                </div>
+            </div>
+            </div>
       <FooterElement/>
     </div>
   );

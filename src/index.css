@@ -163,3 +163,7 @@ html {
   pointer-events: none;
 }
 
+.linear-weather{
+  background: rgb(0,0,0);
+  background: linear-gradient(335deg, rgba(13, 13, 13, 0.961) 41%, rgba(77,77,77,1) 91%);
+}
