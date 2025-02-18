@@ -5,9 +5,64 @@ import FooterElement from '../footer/FooterElement';
 import cards from '../../constants/cards';
 import { useNavigate } from 'react-router-dom';
 
-export default function DestinationPage() {
+const images = {
+    day1: [
+      {image:assets.image1,
+        heading:'Lorem Ipsum',
+        button:'Explore',
+        location:assets.location,
+      },
+      {image:assets.image2,
+        heading:'Lorem Ipsum',
+        button:'Explore',
+        location:assets.location,
+      },
+      {image:assets.image3,
+        heading:'Lorem Ipsum',
+        button:'Explore',
+        location:assets.location,
+      },
+    ],
+    day2: [
+        {image:assets.image2,
+            heading:'Lorem Ipsum',
+            button:'Explore',
+            location:assets.location,
+        },
+        {image:assets.image3,
+            heading:'Lorem Ipsum',
+            button:'Explore',
+            location:assets.location,
+        },
+        {image:assets.image1,
+            heading:'Lorem Ipsum',
+            button:'Explore',
+            location:assets.location,
+        },
+    ],
+    day3: [
+        {image:assets.image3,
+            heading:'Lorem Ipsum',
+            button:'Explore',
+            location:assets.location,
+        },
+        {image:assets.image1,
+            heading:'Lorem Ipsum',
+            button:'Explore',
+            location:assets.location,
+        },
+        {image:assets.image2,
+            heading:'Lorem Ipsum',
+            button:'Explore',
+            location:assets.location,
+        },
+    ],
+  };
+
+export default function ItineraryLanding() {
   const navigate = useNavigate()
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [selectedDay, setSelectedDay] = useState("day1");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,51 +158,41 @@ export default function DestinationPage() {
         </div>
       </div>
       {/*Section 3 */}
-      <div className='bg-black h-screen w-full justify-center flex flex-col items-start p-2' style={{ zIndex: 2 }}>
-        <div className='w-full h-fit items-center justify-center flex' style={{flex:0.5}}>
-        <div className='linear-weather w-fit h-fit bg-opacity-5 rounded-[35px]'>
-          <div className='flex flex-col bg-transparent glass-effect rounded-[35px] p-2 justify-center items-center'>
-            <div className='flex flex-row w-full h-fit'>
-            <div className='flex flex-col justify-center items-center w-full  px-10' style={{flex:2}}>
-              <img src={assets.weather} className='w-[130px] h-[88px] '/>
-              <p className='text-base font-Andika text-white py-1'>
-                Partly Cloudy
-              </p>
+      <div className='bg-black h-screen w-full justify-center flex flex-col items-center p-2' >
+      <div className="flex flex-col items-center w-full justify-center p-6 bg-black h-full">
+      <div className="relative w-full max-w-4xl">
+        <div className="absolute -top-10 left-4 flex space-x-4 z-10">
+          {Object.keys(images).map((day) => (
+            <div
+              key={day}
+              onClick={() => setSelectedDay(day)}
+              className={`px-6 pb-24 hover:cursor-pointer pt-2 z-20 flex items-start justify-center text-white rounded-t-md transition-all duration-300 ${
+                selectedDay === day ? "bg-[#252525f5] text-lg scale-110" : "linear-weather glass-effect text-sm"
+              }`}
+            >
+              {day.replace("day", "Day ")}
             </div>
-            <div className='flex items-center justify-center' style={{flex:0.2}}>
-              <img src={assets.line} className='h-[110px]'/>
-            </div>
-            <div className=' w-full flex flex-col items-center justify-center px-10' style={{flex:2}}>
-              <div className='w-full'>
-              <p className='text-[15px] text-white font-UbuntuBold uppercase text-nowrap py-1'>
-                Chennai, Tamil Nadu
-              </p>
-              <p className='text-[11px] text-white font-Andika'>
-                Monday
-              </p>
-              <p className='text-[33px] font-bold text-white font-salsa'>
-              22°C
+          ))}
+        </div>
+        <div className="linear-weather glass-effect p-5 rounded-lg w-full relative z-20">
+        {images[selectedDay].map((item, index) => (
+            <div key={index} className="relative bg-center bg-cover w-full h-32 rounded-3xl my-5" style={{backgroundImage:`url(${item.image})`}}>
+              <div className="w-full h-full bg-opacity-50 bg-black rounded-3xl flex flex-row p-5" >
+              <p className="absolute flex items-center justify-between text-white text-lg font-semibold">
+                {item.heading}
               </p>
               </div>
             </div>
-            </div>
-          </div>
+          ))}
         </div>
-        </div>
-        <div className=' w-full flex flex-row' style={{flex:2}}>
-          <div  className='w-full flex justify-center items-center p-2' style={{flex:1}}>
-            <img src={assets.location_card} className='w-[441px] h-[362px] rounded-2xl'/>
-          </div>
-          <div className='w-full flex justify-center items-center p-2' style={{flex:1}}>
-
-          </div>
-        </div>
+      </div>
+    </div>
       </div>
       {/* Section 4*/}
       <div className='w-full bg-black'>
             
             <div className='flex flex-col items-center justify-center'>
-                    <p className='text-white text-4xl font-McLaren text-center pt-6'>
+                    <p className='text-white text-4xl font-McLaren text-center pt-2'>
                         Hidden Gems
                     </p>
                     <p className='font-Andika text-white text-center min-[1440px]:text-base text-m py-2 w-[45%]'>
@@ -156,8 +201,8 @@ export default function DestinationPage() {
             </div>
 
                 {/*Hidden gems cards*/}
-                <div className='w-full bg-black'>
-                <div className='flex gap-8 flex-row items-center p-7 mx-14 overflow-scroll'>
+                <div className='w-full bg-black p-4'>
+                <div className='flex gap-8 flex-row items-center p-2 pb-4 mx-14 overflow-scroll'>
                     {cards.map((card,index) =>(
                       <div>
                         <div className='w-[350px] h-[470px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.src})`}}>

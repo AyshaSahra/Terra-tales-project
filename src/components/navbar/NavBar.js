@@ -6,7 +6,7 @@ import HiddenSpot from '../pages/HiddenSpot';
 import ProfilePage from '../profile/SignUp';
 
 export default function NavBar(){
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     return (
         <nav className='bg-black bg-opacity-[0%] z-50 transition-bg-opacity duration-500 hover:bg-opacity-[60%] w-full h-[100px] overflow-hidden flex items-center absolute'>
             <ul className='flex items-center justify-between w-full pr-11 pl-1'>
