@@ -285,7 +285,7 @@ export default function HomePage() {
 
                 {/*Hidden gems cards*/}
                 <div className='w-full bg-black'>
-                <div className='flex gap-8 flex-row items-center p-7 mx-14 overflow-scroll'>
+                <div className='flex gap-8 flex-row items-center px-7 py-3 mx-14 overflow-scroll'>
                     {cards.map((card,index) =>(
                       <div>
                         <div className='w-[350px] h-[470px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.src})`}}>
@@ -313,7 +313,7 @@ export default function HomePage() {
                       </div>  
                     ))}
                 </div>
-                <div className='w-full flex justify-center py-75'>
+                <div className='w-full flex justify-center pb-8'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
                     <a onClick={() => navigate("/hidden-spot")}>
                             Explore

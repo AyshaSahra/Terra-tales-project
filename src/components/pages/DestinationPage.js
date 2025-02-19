@@ -6,9 +6,38 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import cards from '../../constants/cards';
 import CardComponent from '../card.js/CardComponent';
+import { useState } from 'react';
+
+const placeData = [
+    { id: 1, name: "Chennai", image: "chennai.jpg" },
+    { id: 2, name: "Coimbatore", image: "coimbatore.jpg" },
+    { id: 3, name: "Kodaikanal", image: "kodaikanal.jpg" },
+    { id: 4, name: "Coonor", image: "coonor.jpg" },
+  ];
+
+const places = [
+    "Chennai",
+    "Coimbatore",
+    "Madurai",
+    "Thiruchi",
+    "Kodaikanal",
+    "Nagarcovil",
+    "Kanyakumari",
+    "Coonor",
+  ];
 
 export default function DestinationPage() {
     const navigate = useNavigate()
+
+    const [filteredPlaces, setFilteredPlaces] = useState(placeData);
+
+  const filterPlaces = (place) => {
+    if (place === "All") {
+      setFilteredPlaces(placeData);
+    } else {
+      setFilteredPlaces(placeData.filter((p) => p.name === place));
+    }
+  };
     return(
         <div>
             <NavBar/>
@@ -26,6 +55,35 @@ export default function DestinationPage() {
             </div>
             {/*Destination card component*/}
             <div className='w-full bg-black p-16'>
+            <div className="flex flex-wrap gap-3 justify-center w-full mb-6">
+                <button
+                onClick={() => filterPlaces("All")}
+                className="bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200"
+                >
+                All
+                </button>
+                {places.map((place) => (
+                <button
+                    key={place}
+                    onClick={() => filterPlaces(place)}
+                    className="bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200"
+                >
+                    {place}
+                </button>
+                ))}
+            </div>
+            {/*<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {filteredPlaces.map((place) => (
+          <div key={place.id} className="bg-gray-800 p-4 rounded-lg shadow-lg">
+            <img
+              src={place.image}
+              alt={place.name}
+              className="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold">{place.name}</h3>
+          </div>
+        ))}
+      </div>*/}
                 <CardComponent/>
             </div>
             {/*hidden spots*/}

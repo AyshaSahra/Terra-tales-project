@@ -4,6 +4,7 @@ import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
 import cards from '../../constants/cards';
 import { useNavigate } from 'react-router-dom';
+import ParallaxCardCarousel from '../card.js/CardCarousel';
 
 export default function DestinationPage() {
   const navigate = useNavigate()
@@ -156,7 +157,6 @@ export default function DestinationPage() {
             </div>
 
                 {/*Hidden gems cards*/}
-                <div className='w-full bg-black'>
                 <div className='flex gap-8 flex-row items-center p-7 mx-14 overflow-scroll'>
                     {cards.map((card,index) =>(
                       <div>
@@ -185,15 +185,14 @@ export default function DestinationPage() {
                       </div>  
                     ))}
                 </div>
-                <div className='w-full flex justify-center py-75'>
+                <div className='w-full flex justify-center pb-10'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
                     <a onClick={() => navigate("/hidden-spot")}>
                             Explore
                         </a>
                     </button>
                 </div>
-            </div>
-            </div>
+      </div>
       <FooterElement/>
     </div>
   );
