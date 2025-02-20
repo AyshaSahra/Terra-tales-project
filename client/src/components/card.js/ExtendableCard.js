@@ -2,13 +2,31 @@ import React from 'react';
 import assets from '../../constants/assets';
 import {motion} from 'framer-motion';
 import { useState } from 'react';
-import cards from '../../constants/cards';
-
+const cards = [
+    { src: assets.image2, title: "Lorem Ipsum", author: "Lorem",heart_icon:assets.heart,location_icon:assets.location,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
+    button: "Explore",
+     },
+    { src: assets.image1, title: "Lorem Ipsum", author: "Lorem",heart_icon:assets.heart,location_icon:assets.location,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
+    button: "Explore",
+     },
+    { src: assets.image3, title: "Lorem Ipsum", author: "Lorem",heart_icon:assets.heart,location_icon:assets.location,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
+    button: "Explore",
+     },
+    { src: assets.image4, title: "Lorem Ipsum", author: "Lorem",heart_icon:assets.heart,location_icon:assets.location,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
+    button: "Explore",
+     },
+    { src: assets.image5, title: "Lorem Ipsum", author: "Lorem",heart_icon:assets.heart,location_icon:assets.location,
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed.",
+    button: "Explore",
+     },]
 export default function ExtendableCard(){
-
   const [selected, setSelected] = useState(0);
     return(
-      <div className="flex flex-col flex-wrap gap-4 p-9 mx-24 w-full justify-center items-center overflow-x-scroll h-[420px]">
+      <div className="flex flex-col flex-wrap gap-4 p-9 mx-24 w-full justify-center items-center overflow-x-hidden h-[420px]">
                     {cards.map((card, index) => (
                         <motion.div
                         key={index}

@@ -12,8 +12,6 @@ import FavouritePage from './components/pages/FavouritesPage';
 import DestinationLanding from './components/landinga pages/DestinationLanding'
 import SignUpMongo from './components/profile/SignUpMongo';
 import ItineraryLanding from './components/landinga pages/ItineraryLanding';
-import CardCarousel from './components/card.js/CardCarousel';
-
 
 function App() {
   return (
@@ -24,7 +22,6 @@ function App() {
             <Route path="/destination" element={<DestinationPage/>} />
             <Route path="/hidden-spot" element={<HiddenSpot/>} />
             <Route path="/itinerary" element={<ItineraryPage/>} />
-            <Route path="/forum" element={<HiddenSpot/>} />
             <Route path="/favourite" element={<FavouritePage/>} />
             <Route path="/SignUp" element={<SignUp/>} />
             <Route path='/login' element={<LoginPage/>}/>

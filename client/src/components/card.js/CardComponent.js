@@ -3,12 +3,23 @@ import assets from '../../constants/assets';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import cards from '../../constants/cards';
+import { useState } from 'react';
 
 export default function CardComponent(){
     const navigate = useNavigate()
+    
+    const [likedCards, setLikedCards] = useState({}); // Tracks liked state
+
+    const toggleLike = (index) => {
+        setLikedCards((prev) => ({
+            ...prev,
+            [index]: !prev[index], // Toggle like state
+        }));
+    };
+    console.log(likedCards)
     return(
         <div>
-        <div className='w-full h-[1515px] overflow-y-hidden px-7 gap-6 py-9 flex flex-wrap items-start justify-center'>
+        <div className='w-full h-[1450px]  z-10 overflow-y-hidden px-7 gap-6 py-9 flex flex-wrap items-start justify-center'>
                 {cards.map((image, index) => (
                     <motion.div
                     key={index}
@@ -19,7 +30,15 @@ export default function CardComponent(){
                     <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                         <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                         <p className='text-white text-2xl font-Salsa'>{image.title}</p>
-                        <img src={image.heart_icon} alt='heart' className='w-6 h-6 ml-auto mx-2'/>
+                        <img 
+                                    src={likedCards[index] 
+                                        ? image.heart_icon_filled // Filled heart 
+                                        : image.heart_icon// Outlined heart
+                                    } 
+                                    alt='heart' 
+                                    className='w-6 h-6 ml-auto mx-2 cursor-pointer transition-all duration-300' 
+                                    onClick={() => toggleLike(index)}
+                                />
                         </div>
                         <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                         <img src={image.location_icon} className='w-[18px] h-[18px]'/>
@@ -41,7 +60,7 @@ export default function CardComponent(){
                             Explore
                         </a>
                     </button>
-            </div>
+            </div >
         </div>
     )
 }

@@ -16,9 +16,11 @@ import beach from '../assets/beach.jpg'
 import weather from '../assets/weather oppo.svg'
 import line from '../assets/Line.svg'
 import location_card from '../assets/location card.jpg'
+import heartfill from '../assets/heart-fill.png'
 
 export default{
     heart,
+    heartfill,
     logo,
     profile,
     white_heart,

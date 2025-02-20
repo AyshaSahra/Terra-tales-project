@@ -7,15 +7,38 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
 import cards from '../../constants/cards'
+import ProfileView from '../profile/ProfileView'
+import { useContext } from 'react'
+import { UserContext } from '../../context/UserContext'
+import HiddenCards from '../card.js/HiddenCard'
 
 export default function HomePage() {
     const [selected, setSelected] = useState(0);
-    const navigate = useNavigate();  
+    const navigate = useNavigate(); 
+    
+    const [openEnterRaffle, setOpenEnterRaffle] = useState(false);
+
+    const [openTicket, setOpenTicket] = useState(false);
+
+    const handleCloseTicket = () => {
+        setOpenTicket(false);
+      };
+
+      const { user, setUser } = useContext(UserContext);
+    const handleOpenTicket = () => {
+        setOpenTicket(true);
+      };
+
+    const handleCloseEnterRaffle = () => {
+        setOpenEnterRaffle(false);
+    };
+
+    
 
     return (
-
+        <>
+        <NavBar/>
         <div>
-            <NavBar/>
             {/*HOME SCREEN*/}
            <div className=' w-full radial-gradient home-background px-10 py-10 h-screen flex flex-col justify-end pb-3 items-start'>
              <div className='py-9'>
@@ -71,7 +94,8 @@ export default function HomePage() {
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    <button 
+                                    className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
                                     </button>
                                 
@@ -258,7 +282,7 @@ export default function HomePage() {
             </div>
 
                 {/*Itinerary cards*/}
-                <div className='mx-20 flex justify-center items-center'>
+                <div className='mx-14 flex justify-center items-center'>
                 <ExampleCard/>
                 </div>
 
@@ -285,37 +309,10 @@ export default function HomePage() {
 
                 {/*Hidden gems cards*/}
                 <div className='w-full bg-black'>
-                <div className='flex gap-8 flex-row items-center px-7 py-3 mx-14 overflow-scroll'>
-                    {cards.map((card,index) =>(
-                      <div>
-                        <div className='w-[350px] h-[470px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.src})`}}>
-                        <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
-                        <div className='flex flex-row h-fit w-full items-center px-2 pt-3'>
-                           <p className='text-white text-2xl font-Salsa'>
-                                    {card.title}
-                            </p>
-                            <img src={card.heart_icon} alt='location' className='w-6 h-6 ml-auto mx-2'/> 
-                        </div>
-                        <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
-                            <img src={card.location_icon} className='w-[18px] h-[18px]'/>
-                            <p className='text-white text-sm font-Andika mx-1'>
-                                Lorem
-                            </p>
-                         </div>
-                         <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-                            {card.text}           
-                        </p>
-                            <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
-                                {card.button} 
-                            </button>
-                        </div>
-                        </div>
-                      </div>  
-                    ))}
-                </div>
+                <HiddenCards cards={cards}/>
                 <div className='w-full flex justify-center pb-8'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={() => navigate("/hidden-spot")}>
+                    <a onClick={handleOpenTicket}>
                             Explore
                         </a>
                     </button>
@@ -323,6 +320,12 @@ export default function HomePage() {
             </div>
             </div>
             <FooterElement/>
+            <ProfileView
+        open={openTicket}
+        handleClose={handleCloseTicket}
+        state={user}
+      />
         </div>
+        </>
     )
 }

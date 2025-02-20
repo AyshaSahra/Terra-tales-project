@@ -69,7 +69,7 @@ export default function FavouritePage() {
             </div>
 
                 {/*Itinerary cards*/}
-                <div className='mx-20 flex justify-center items-center'>
+                <div className='mx-14 flex justify-center items-center'>
                 <ExampleCard/>
                 </div>
 
