@@ -105,6 +105,7 @@ export default function DestinationPage() {
       </div>
       {/*Section 3 */}
       <div className='bg-black h-screen w-full justify-center flex flex-col items-start p-2' style={{ zIndex: 2 }}>
+        {/*Weather*/}
         <div className='w-full h-fit items-center justify-center flex' style={{flex:0.5}}>
         <div className='linear-weather w-fit h-fit bg-opacity-5 rounded-[35px]'>
           <div className='flex flex-col bg-transparent glass-effect rounded-[35px] p-2 justify-center items-center'>
@@ -127,7 +128,7 @@ export default function DestinationPage() {
                 Monday
               </p>
               <p className='text-[33px] font-bold text-white font-salsa'>
-              22°C
+                22°C
               </p>
               </div>
             </div>
