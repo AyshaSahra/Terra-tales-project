@@ -12,25 +12,34 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log('✅ MongoDB connected'))
     .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// ✅ Define Card Schema
+// ✅ Define Card Schema (Original)
 const cardSchema = new mongoose.Schema({
     title: String,
     author: String,
     description: String,
     imageURL: String
 });
-const Card = mongoose.model('Card', cardSchema);
+const Card = mongoose.model('Card', cardSchema, 'cards');
 
-// ✅ Define Hidden Spot Schema
+// ✅ Define Itinerary Card Schema (Renamed from Card)
+const itineraryCardSchema = new mongoose.Schema({
+    title: String,
+    author: String,
+    description: String,
+    imageURL: String
+});
+const ItineraryCard = mongoose.model('ItineraryCard', itineraryCardSchema, 'itinerary-cards');
+
+// ✅ Define Hidden Spot Schema (UNCHANGED)
 const hiddenSpotSchema = new mongoose.Schema({
     title: String,
     src: String,
-    location:String,
+    location: String,
     text: String,
 });
-const HiddenSpot = mongoose.model('HiddenSpot', hiddenSpotSchema, 'hidden-spots'); // Ensures correct collection name
+const HiddenSpot = mongoose.model('HiddenSpot', hiddenSpotSchema, 'hidden-spots');
 
-// ✅ API Endpoint to Get Cards (UNCHANGED)
+// ✅ API Endpoint to Get Cards
 app.get('/api/cards', async (req, res) => {
     try {
         const cards = await Card.find();
@@ -40,7 +49,17 @@ app.get('/api/cards', async (req, res) => {
     }
 });
 
-// ✅ API Endpoint to Get Hidden Spots (UPDATED)
+// ✅ API Endpoint to Get Itinerary Cards
+app.get('/api/itinerary-cards', async (req, res) => {
+    try {
+        const itineraryCards = await ItineraryCard.find();
+        res.json(itineraryCards);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching itinerary cards" });
+    }
+});
+
+// ✅ API Endpoint to Get Hidden Spots
 app.get('/api/hidden-spots', async (req, res) => {
     try {
         const hiddenSpots = await HiddenSpot.find();
