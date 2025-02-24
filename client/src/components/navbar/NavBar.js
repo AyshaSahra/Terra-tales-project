@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import whiteHeart from '../../assets/heart white.png';
 import profileIcon from '../../assets/profile.png';
 import assets from '../../constants/assets';
+import ProfileView from '../profile/ProfileView';
+import { UserContext } from '../../context/UserContext';
 
 export default function NavBar() {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+
+     const [openEnterRaffle, setOpenEnterRaffle] = useState(false);
+
+    const [openTicket, setOpenTicket] = useState(false);
+
+    const handleClosepopup = () => {
+        setOpenTicket(false);
+      };
+
+      const { user, setUser } = useContext(UserContext);
+    const handleOpenPopup = () => {
+        setOpenTicket(true);
+      };
+
+    const handleCloseEnterRaffle = () => {
+        setOpenEnterRaffle(false);
+    };
 
     return (
         <nav className='bg-black bg-opacity-[0%] z-50 transition-bg-opacity duration-500 hover:bg-opacity-[60%] w-full h-[100px] max-[768px]:bg-opacity-[70%] flex items-center absolute px-4'>
@@ -52,6 +71,12 @@ export default function NavBar() {
                     </div>
                 </div>
             )}
+            {/*<a onClick={handleOpenPopup}>*/}
+             <ProfileView
+        open={openTicket}
+        handleClose={handleClosepopup}
+        state={user}
+      />
         </nav>
     );
 }

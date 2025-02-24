@@ -5,6 +5,7 @@ import DestinationPage from './components/pages/DestinationPage';
 import HiddenSpot from './components/pages/HiddenSpot';
 import ItineraryPage from './components/pages/ItineraryPage';
 import SignUp from './components/profile/SignUp';
+import SignUpMongo from './components/profile/SignUp';
 import LoginPage from './components/profile/loginPage';
 import FavouritePage from './components/pages/FavouritesPage';
 import DestinationLanding from './components/landinga pages/DestinationLanding'

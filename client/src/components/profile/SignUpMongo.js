@@ -1,9 +1,7 @@
 import assets from "../../constants/assets";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../FireBase/firebaseConfig";
+import axios from "axios"; // Import axios for API calls
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -20,21 +18,16 @@ export default function SignUp() {
         }
 
         try {
-            // Firebase Authentication
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await updateProfile(userCredential.user, { displayName: username });
-
-            // Send user data to MongoDB using Axios
-            await axios.post("http://localhost:5000/register", {
+            const response = await axios.post("http://localhost:5000/api/auth/signup", {
                 username,
                 email,
-                password, // The backend will hash this
-                firebaseUID: userCredential.user.uid,
+                password
             });
 
-            navigate("/login"); // Redirect after signup
+            console.log(response.data);
+            navigate("/login"); // Redirect after successful signup
         } catch (error) {
-            setError(error.response?.data?.error || error.message);
+            setError(error.response?.data?.message || "Signup failed. Try again.");
         }
     };
 

@@ -20,12 +20,12 @@ export default function HomePage() {
 
     const [openTicket, setOpenTicket] = useState(false);
 
-    const handleCloseTicket = () => {
+    const handleClosepopup = () => {
         setOpenTicket(false);
       };
 
       const { user, setUser } = useContext(UserContext);
-    const handleOpenTicket = () => {
+    const handleOpenPopup = () => {
         setOpenTicket(true);
       };
 
@@ -312,7 +312,7 @@ export default function HomePage() {
                 <HiddenCards cards={cards}/>
                 <div className='w-full flex justify-center pb-8'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={handleOpenTicket}>
+                    <a onClick={handleOpenPopup}>
                             Explore
                         </a>
                     </button>
@@ -322,7 +322,7 @@ export default function HomePage() {
             <FooterElement/>
             <ProfileView
         open={openTicket}
-        handleClose={handleCloseTicket}
+        handleClose={handleClosepopup}
         state={user}
       />
         </div>
