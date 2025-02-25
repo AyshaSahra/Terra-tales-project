@@ -282,7 +282,7 @@ export default function HomePage() {
             </div>
 
                 {/*Itinerary cards*/}
-                <div className='mx-14 flex justify-center items-center'>
+                <div className='mx-[72px] flex justify-center items-center'>
                 <ExampleCard/>
                 </div>
 

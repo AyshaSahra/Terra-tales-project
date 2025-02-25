@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
 import assets from '../../constants/assets';
@@ -7,7 +7,25 @@ import cards from '../../constants/cards';
 import CardComponent from '../card.js/CardComponent';
 import FilterComponent from '../card.js/FilterComponent';
 import HiddenCards from '../card.js/HiddenCard'
+import ItineraryCard from '../card.js/ItineraryCard';
 
+export const placeData = [
+    { id: 1, name: "Chennai", image: "/assets/chennai.jpg" },
+    { id: 2, name: "Coimbatore", image: "/assets/coimbatore.jpg" },
+    { id: 3, name: "Kodaikanal", image: "/assets/kodaikanal.jpg" },
+    { id: 4, name: "Coonor", image: "/assets/coonor.jpg" },
+  ];
+
+  export const places = [
+    "Chennai",
+    "Coimbatore",
+    "Madurai",
+    "Thiruchi",
+    "Kodaikanal",
+    "Nagarcovil",
+    "Kanyakumari",
+    "Coonor",
+  ];
 export default function ItineraryPage() {
     const navigate = useNavigate();
     return(
@@ -26,10 +44,12 @@ export default function ItineraryPage() {
                 </div>   
             </div>
             {/*card component */}
-            <div className='w-full bg-black p-16'>
-                <FilterComponent/>
-                <CardComponent/>
-            </div>
+            <div className="w-full bg-black p-16">
+        {/* Filter Buttons */}
+            <FilterComponent/>
+        {/* Dynamic Cards Component */}
+        <ItineraryCard/>
+      </div>
 
         <div className='w-full bg-black'>
             

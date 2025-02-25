@@ -1,15 +1,16 @@
 import React from 'react';
 import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
-import CardComponent from '../card.js/CardComponent';
+import HiddenspotCard from '../card.js/HiddenspotsCard';
 import { useState } from 'react';
 import assets from '../../constants/assets';
+import { useNavigate } from 'react-router-dom';
 
 const places = [
-    "Chennai",
-    "Coimbatore",
+    "Namakkal",
+    "Dindigul",
     "Madurai",
-    "Thiruchi",
+    "Theni",
     "Kodaikanal",
     "Nagarcovil",
     "Kanyakumari",
@@ -23,14 +24,15 @@ const places = [
     { id: 4, name: "Coonor", image: "coonor.jpg" },
   ];
 export default function HiddenSpot() {
-    const [filteredPlaces, setFilteredPlaces] = useState(placeData);
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [filteredPlaces, setFilteredPlaces] = useState(placeData);
 
   const filterPlaces = (place) => {
-    if (place === "All") {
-      setFilteredPlaces(placeData);
-    } else {
-      setFilteredPlaces(placeData.filter((p) => p.name === place));
-    }
+    setSelectedCategory(place);
+    setFilteredPlaces(
+      place === "All" ? placeData : placeData.filter((p) => p.name === place)
+    );
   };
     return(
         <div>
@@ -48,38 +50,35 @@ export default function HiddenSpot() {
                 </div>    
         </div>
         {/*Cards component*/}
-        <div className='w-full bg-black p-16'>
-        <div className="flex flex-wrap gap-3 justify-center w-full mb-6">
-                <button
-                onClick={() => filterPlaces("All")}
-                className="bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200"
-                >
-                All
-                </button>
-                {places.map((place) => (
-                <button
-                    key={place}
-                    onClick={() => filterPlaces(place)}
-                    className="bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200"
-                >
-                    {place}
-                </button>
-                ))}
-            </div>
-            {/*<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {filteredPlaces.map((place) => (
-                <div key={place.id} className="bg-gray-800 p-4 rounded-lg shadow-lg">
-                    <img
-                    src={place.image}
-                    alt={place.name}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                    />
-                    <h3 className="text-lg font-semibold">{place.name}</h3>
+        <div className="w-full bg-black p-16">
+                {/* Filter Buttons */}
+                <div className="flex flex-wrap gap-3 justify-center w-full mb-6">
+                  <button
+                    onClick={() => filterPlaces("All")}
+                    className={`bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 ${
+                      selectedCategory === "All" ? "font-bold" : ""
+                    }`}
+                  >
+                    All
+                  </button>
+                  {places.map((place) => (
+                    <button
+                      key={place}
+                      onClick={() => filterPlaces(place)}
+                      className={`bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 ${
+                        selectedCategory === place ? "font-bold" : ""
+                      }`}
+                    >
+                      {place}
+                    </button>
+                  ))}
                 </div>
-                ))}
-            </div>*/}
-                    <CardComponent/>
-                    </div>
+        
+                {/* Destination Cards */}
+        
+                {/* Dynamic Cards Component */}
+                <HiddenspotCard selectedCategory={selectedCategory} />
+              </div>
         <FooterElement/>
         </div>
     )

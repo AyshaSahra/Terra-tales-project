@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .then(() => console.log('✅ MongoDB connected'))
     .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// ✅ Define Card Schema (Original)
+// ✅ Define Card Schema
 const cardSchema = new mongoose.Schema({
     title: String,
     author: String,
@@ -21,16 +21,16 @@ const cardSchema = new mongoose.Schema({
 });
 const Card = mongoose.model('Card', cardSchema, 'cards');
 
-// ✅ Define Itinerary Card Schema (Renamed from Card)
+// ✅ Define Itinerary Card Schema
 const itineraryCardSchema = new mongoose.Schema({
     title: String,
-    author: String,
-    description: String,
-    imageURL: String
+    location: String,  // ✅ Add location
+    text: String,  // ✅ Rename 'description' to 'text'
+    src: String  // ✅ Rename 'imageURL' to 'src'
 });
 const ItineraryCard = mongoose.model('ItineraryCard', itineraryCardSchema, 'itinerary-cards');
 
-// ✅ Define Hidden Spot Schema (UNCHANGED)
+// ✅ Define Hidden Spot Schema
 const hiddenSpotSchema = new mongoose.Schema({
     title: String,
     src: String,
