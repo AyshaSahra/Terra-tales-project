@@ -263,9 +263,12 @@ export default function HomePage() {
 
                 <div className='w-full flex justify-center pb-10'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={() => navigate("/destination")}>
-                            Explore
-                        </a>
+                    <a onClick={() => {
+                            window.scrollTo(0, 0); // Scroll to top
+                            navigate("/destination");
+                        }}>
+                        Explore
+                    </a>
                     </button>
                 </div>
             </div>
@@ -288,7 +291,10 @@ export default function HomePage() {
 
                 <div className='w-full flex justify-center pb-10'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-base w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={() => navigate("/itinerary")}>
+                    <a onClick={() => {
+                            window.scrollTo(0, 0); // Scroll to top
+                            navigate("/itinerary");
+                        }}>
                             Explore
                         </a>
                     </button>

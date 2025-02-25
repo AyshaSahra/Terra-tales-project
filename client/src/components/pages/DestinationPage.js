@@ -8,21 +8,29 @@ import cards from "../../constants/cards";
 import CardComponent from "../card.js/CardComponent";
 import HiddenCards from "../card.js/HiddenCard";
 
-const placeData = [
+export const placeData = [
   { id: 1, name: "Chennai", image: "/assets/chennai.jpg" },
   { id: 2, name: "Coimbatore", image: "/assets/coimbatore.jpg" },
   { id: 3, name: "Kodaikanal", image: "/assets/kodaikanal.jpg" },
   { id: 4, name: "Coonor", image: "/assets/coonor.jpg" },
 ];
 
-const places = [
+export const places = [
   "Chennai",
   "Coimbatore",
   "Madurai",
-  "Thiruchi",
+  "Trichy",
   "Kodaikanal",
-  "Nagarcovil",
-  "Kanyakumari",
+  "Nagercoil",
+  "Kanniyakumari",
+  "Coonor",
+  "Chennai",
+  "Coimbatore",
+  "Madurai",
+  "Trichy",
+  "Kodaikanal",
+  "Nagercoil",
+  "Kanniyakumari",
   "Coonor",
 ];
 
@@ -65,12 +73,12 @@ export default function DestinationPage() {
       </div>
 
       {/* Destination Filters & Cards */}
-      <div className="w-full bg-black p-16">
+      <div className="w-full flex justify-center flex-col bg-black p-16">
         {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-3 justify-center w-full mb-6">
+        <div className="flex flex-row flex-nowrap gap-4 p-9 mx-5 w-full justify-start items-center overflow-y-scroll h-auto mb-6">
           <button
             onClick={() => filterPlaces("All")}
-            className={`bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 ${
+            className={`bg-white text-black over px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 ${
               selectedCategory === "All" ? "font-bold" : ""
             }`}
           >
