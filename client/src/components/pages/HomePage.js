@@ -33,7 +33,11 @@ export default function HomePage() {
         setOpenEnterRaffle(false);
     };
 
-    
+    const [isFilled, setIsFilled] = useState(false);
+
+  const handleToggle = () => {
+    setIsFilled((prev) => !prev);
+  };
 
     return (
         <>
@@ -78,21 +82,31 @@ export default function HomePage() {
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
-                                    Lorem ipsum 
+                                    {/*Title 1*/} 
+                                    Lorem ipsum
                                 </p>
-                                <img src={assets.heart} alt='location' className='w-6 h-6 ml-auto mx-2'/>
+                                <img
+                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
+                                    alt="heart"
+                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
+                                    onClick={handleToggle}
+                                    />
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
+                                        {/*location 1*/}
                                         Lorem
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                     {/*Text 1*/}
+                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    
+                                     
                                     </p>
                                     <button 
                                     className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
@@ -109,21 +123,31 @@ export default function HomePage() {
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
-                                    Lorem ipsum 
+                                    {/*Title 2*/}
+                                    Lorem ipsum
                                 </p>
-                                <img src={assets.heart} alt='location' className='w-6 h-6 ml-auto mx-2'/>
+                                <img
+                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
+                                    alt="heart"
+                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
+                                    onClick={handleToggle}
+                                    />
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
-                                        Lorem
+                                       {/*location 2*/}
+                                       Lorem
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                        {/*text 2*/}
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    
+                                        
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -142,21 +166,31 @@ export default function HomePage() {
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
-                                    Lorem ipsum 
+                                    {/*Title 3*/} 
+                                    Lorem ipsum
                                 </p>
-                                <img src={assets.heart} alt='location' className='w-6 h-6 ml-auto mx-2'/>
+                                <img
+                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
+                                    alt="heart"
+                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
+                                    onClick={handleToggle}
+                                    />
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
+                                        {/*location 3*/}
                                         Lorem
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    {/*text 3*/}
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    
+                                    
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -172,21 +206,31 @@ export default function HomePage() {
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
-                                    Lorem ipsum 
+                                    {/*Title 4*/}
+                                    Lorem ipsum
                                 </p>
-                                <img src={assets.heart} alt='location' className='w-6 h-6 ml-auto mx-2'/>
+                                <img
+                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
+                                    alt="heart"
+                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
+                                    onClick={handleToggle}
+                                    />
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
+                                        {/*location 4*/}
                                         Lorem
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    {/*text 4*/}
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    
+                                    
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -205,21 +249,31 @@ export default function HomePage() {
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
-                                    Lorem ipsum 
+                                    {/*Title 5*/}
+                                    Lorem ipsum
                                 </p>
-                                <img src={assets.heart} alt='location' className='w-6 h-6 ml-auto mx-2'/>
+                                <img
+                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
+                                    alt="heart"
+                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
+                                    onClick={handleToggle}
+                                    />
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
+                                        {/*location 5*/}
                                         Lorem
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    {/*text 5*/}
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    
+                                    
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -235,21 +289,31 @@ export default function HomePage() {
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
-                                    Lorem ipsum 
+                                    {/*Title 6*/} 
+                                    Lorem ipsum
                                 </p>
-                                <img src={assets.heart} alt='location' className='w-6 h-6 ml-auto mx-2'/>
+                                <img
+                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
+                                    alt="heart"
+                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
+                                    onClick={handleToggle}
+                                    />
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
+                                        {/*location 6*/}
                                         Lorem
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                                    {/*text 6*/}
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
+                                    
+                                    
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 

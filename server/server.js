@@ -49,6 +49,21 @@ app.get('/api/cards', async (req, res) => {
     }
 });
 
+// ✅ API Endpoint to Get a Single Card by ID
+app.get('/api/cards/:id', async (req, res) => {
+    try {
+        const card = await Card.findById(req.params.id);
+        if (!card) {
+            return res.status(404).json({ message: "Card not found" });
+        }
+        res.json(card);
+    } catch (error) {
+        console.error("Error fetching card:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
 // ✅ API Endpoint to Get Itinerary Cards
 app.get('/api/itinerary-cards', async (req, res) => {
     try {

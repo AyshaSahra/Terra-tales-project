@@ -22,6 +22,26 @@ const HiddenCard = () => {
     fetchHiddenSpots();
   }, []);
 
+  // Load liked spots from localStorage
+  useEffect(() => {
+    const savedLikes = JSON.parse(localStorage.getItem("likedHiddenSpots")) || {};
+    setLikedCards(savedLikes);
+  }, []);
+
+  // Function to handle like/unlike
+  const toggleFavourite = (spot) => {
+    const updatedLikes = { ...likedCards };
+
+    if (updatedLikes[spot._id]) {
+      delete updatedLikes[spot._id]; // Remove if already liked
+    } else {
+      updatedLikes[spot._id] = spot; // Add to favourites
+    }
+
+    setLikedCards(updatedLikes);
+    localStorage.setItem("likedHiddenSpots", JSON.stringify(updatedLikes));
+  };
+
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer || hiddenspot.length === 0) return;
@@ -81,12 +101,10 @@ const HiddenCard = () => {
                   <div className="flex flex-row h-fit w-full items-center px-2 pt-3">
                     <p className="text-white text-2xl font-Salsa">{spot.title}</p>
                     <img
-                      src={likedCards[index] 
-                        ? assets.heartfill 
-                        : assets.heart
-                      } 
+                      src={likedCards[spot._id] ? assets.heartfill : assets.heart}
                       alt="heart"
-                      className="w-6 h-6 ml-auto mx-2"
+                      className="w-6 h-6 ml-auto mx-2 cursor-pointer transition-all duration-300"
+                      onClick={() => toggleFavourite(spot)}
                     />
                   </div>
                   <div className="flex flex-row h-fit w-full items-center px-1 pt-2">

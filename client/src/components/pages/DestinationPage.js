@@ -120,7 +120,10 @@ export default function DestinationPage() {
           <div className="w-full flex justify-center pb-8">
             <button
               className="bg-white text-black font-Andika font-semibold content-center text-m w-fit rounded-full px-6 py-2 pt-1"
-              onClick={() => navigate("/explore-hidden-gems")}
+              onClick={() => {
+                window.scrollTo(0, 0); // Scroll to top
+                navigate("/hidden-spot");
+            }}
             >
               Explore
             </button>

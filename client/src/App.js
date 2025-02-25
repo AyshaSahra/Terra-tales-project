@@ -10,6 +10,8 @@ import LoginPage from './components/profile/loginPage';
 import FavouritePage from './components/pages/FavouritesPage';
 import DestinationLanding from './components/landinga pages/DestinationLanding'
 import ItineraryLanding from './components/landinga pages/ItineraryLanding';
+import WeatherWidget from '../src/components/weather/WeatherWidget'
+import GoogleMapComponent from '../src/components/weather/GoogleMapComponent'
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/place-landing' element={<DestinationLanding/>}/>
             <Route path='/itinerary-landing' element={<ItineraryLanding/>}/>
+            <Route path='/weather' element={<WeatherWidget/>}/>
+            <Route path='/maps' element={<GoogleMapComponent/>}/>
+            <Route path="/destination/:id" element={<DestinationLanding/>} />
           </Routes>
           
     </div>
