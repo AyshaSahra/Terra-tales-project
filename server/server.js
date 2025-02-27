@@ -15,9 +15,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 // ✅ Define Card Schema
 const cardSchema = new mongoose.Schema({
     title: String,
-    author: String,
+    location: String,
     description: String,
-    imageURL: String
+    imageURL: String,
+    landingDescription:String,
 });
 const Card = mongoose.model('Card', cardSchema, 'cards');
 

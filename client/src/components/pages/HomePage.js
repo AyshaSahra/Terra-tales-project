@@ -3,7 +3,7 @@ import NavBar from '../navbar/NavBar'
 import assets from '../../constants/assets'
 import FooterElement from '../footer/FooterElement'
 import ExampleCard from '../card.js/ExtendableCard'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
 import cards from '../../constants/cards'
@@ -38,6 +38,15 @@ export default function HomePage() {
   const handleToggle = () => {
     setIsFilled((prev) => !prev);
   };
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/cards") // Replace with your actual API
+      .then((res) => res.json())
+      .then((result) => setData(result))
+      .catch((err) => console.error(err));
+  }, []);
 
     return (
         <>
@@ -78,12 +87,12 @@ export default function HomePage() {
                     <div className='w-full flex flex-col  gap-7'>
                         {/*Card 1*/}
                     <div className='bg-black full'>
-                        <div className='h-[500px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image1})`}}>
+                        <div className='h-[500px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[0]?.imageURL || 'fallback.jpg'})`}}>
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 1*/} 
-                                    Lorem ipsum
+                                    {data[0]?.title || "Loading..."}
                                 </p>
                                 <img
                                     src={isFilled ? assets.heartfill : assets.heart} // Toggle images
@@ -97,16 +106,14 @@ export default function HomePage() {
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
                                         {/*location 1*/}
-                                        Lorem
+                                        {data[0]?.location || "Loading..."}
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                      {/*Text 1*/}
-                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    
-                                     
+                                     {data[0]?.description || "Loading..."}
                                     </p>
                                     <button 
                                     className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
@@ -119,12 +126,12 @@ export default function HomePage() {
 
                     {/*Card 2*/}
                     <div className='bg-black full'>
-                        <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image2})`}}>
+                        <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[1]?.imageURL || 'fallback.jpg'})`}}>
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 2*/}
-                                    Lorem ipsum
+                                    {data[1]?.title || "Loading..."}
                                 </p>
                                 <img
                                     src={isFilled ? assets.heartfill : assets.heart} // Toggle images
@@ -138,16 +145,14 @@ export default function HomePage() {
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
                                        {/*location 2*/}
-                                       Lorem
+                                       {data[1]?.location || "Loading..."}
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                         {/*text 2*/}
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    
-                                        
+                                        {data[1]?.description || "Loading..."}
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -162,12 +167,12 @@ export default function HomePage() {
                     <div className='w-full flex flex-col gap-6'>
                         {/*Card 3*/}
                         <div className='bg-black full'>
-                        <div className='h-[340px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image2})`}}>
+                        <div className='h-[340px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[2]?.imageURL || 'fallback.jpg'})`}}>
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 3*/} 
-                                    Lorem ipsum
+                                    {data[2]?.title || "Loading..."}
                                 </p>
                                 <img
                                     src={isFilled ? assets.heartfill : assets.heart} // Toggle images
@@ -181,16 +186,14 @@ export default function HomePage() {
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
                                         {/*location 3*/}
-                                        Lorem
+                                        {data[2]?.location || "Loading..."}
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     {/*text 3*/}
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    
-                                    
+                                    {data[2]?.description || "Loading..."}
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -202,12 +205,12 @@ export default function HomePage() {
 
                     {/*Card 4*/}
                     <div className='bg-black full'>
-                        <div className='h-[510px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image4})`}}>
+                        <div className='h-[510px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[3]?.imageURL || 'fallback.jpg'})`}}>
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 4*/}
-                                    Lorem ipsum
+                                    {data[3]?.title || "Loading..."}
                                 </p>
                                 <img
                                     src={isFilled ? assets.heartfill : assets.heart} // Toggle images
@@ -221,16 +224,14 @@ export default function HomePage() {
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
                                         {/*location 4*/}
-                                        Lorem
+                                        {data[3]?.location || "Loading..."}
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     {/*text 4*/}
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    
-                                    
+                                    {data[3]?.description || "Loading..."}
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -245,12 +246,12 @@ export default function HomePage() {
                     <div className='w-full flex flex-col gap-6'>
                         {/*Card 5*/}
                         <div className='bg-black full'>
-                        <div className='h-[500px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image1})`}}>
+                        <div className='h-[500px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[345px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[4]?.imageURL || 'fallback.jpg'})`}}>
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 5*/}
-                                    Lorem ipsum
+                                    {data[4]?.title || "Loading..."}
                                 </p>
                                 <img
                                     src={isFilled ? assets.heartfill : assets.heart} // Toggle images
@@ -264,16 +265,14 @@ export default function HomePage() {
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
                                         {/*location 5*/}
-                                        Lorem
+                                        {data[4]?.location || "Loading..."}
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     {/*text 5*/}
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    
-                                    
+                                    {data[4]?.description || "Loading..."}
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 
@@ -285,12 +284,12 @@ export default function HomePage() {
                     
                     {/*Card 6*/}
                     <div className='bg-black full'> {/**/}
-                    <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${assets.image2})`}}>
+                    <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[5]?.imageURL || 'fallback.jpg'})`}}>
                             <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 6*/} 
-                                    Lorem ipsum
+                                    {data[5]?.title || "Loading..."}
                                 </p>
                                 <img
                                     src={isFilled ? assets.heartfill : assets.heart} // Toggle images
@@ -304,16 +303,14 @@ export default function HomePage() {
                                     <img src={assets.location} className='w-[18px] h-[18px]'/>
                                     <p className='text-white text-sm font-Andika mx-1'>
                                         {/*location 6*/}
-                                        Lorem
+                                        {data[5]?.location || "Loading..."}
                                     </p>
                                 </div>
                                 
                                 
                                     <p className='text-white text-sm pt-1 font-Andika mx-6 text-balance mb-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     {/*text 6*/}
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur maximus lacus, non lacinia enim sodales sed. Aenean a facilisis purus. Ut varius eget velit egestas ullamcorper. Praesent sed volutpat lorem, sit amet pellentesque turpis. Mauris pellentesque diam nec placerat consequat.
-                                    
-                                    
+                                    {data[5]?.description || "Loading..."}
                                     </p>
                                     <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
                                         Explore more 

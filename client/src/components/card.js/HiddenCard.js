@@ -98,8 +98,8 @@ const HiddenCard = () => {
                 style={{ backgroundImage: `url(${spot.src})` }}
               >
                 <div className="w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden">
-                  <div className="flex flex-row h-fit w-full items-center px-2 pt-3">
-                    <p className="text-white text-2xl font-Salsa">{spot.title}</p>
+                  <div className="flex flex-row h-fit w-full justify-evenly items-center px-2 pt-3">
+                    <p className="text-white text-2xl font-Salsa break-words whitespace-normal h-fit w-60">{spot.title}</p>
                     <img
                       src={likedCards[spot._id] ? assets.heartfill : assets.heart}
                       alt="heart"

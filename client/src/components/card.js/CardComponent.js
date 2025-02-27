@@ -33,11 +33,30 @@ export default function CardComponent({ selectedCategory }) {
         }
     }, [selectedCategory, cards]);
 
+    useEffect(() => {
+        // Load liked cards from localStorage when component mounts
+        const savedLikes = JSON.parse(localStorage.getItem("likedDestinations")) || {};
+        setLikedCards(savedLikes);
+    }, []);
+
     const toggleLike = (index) => {
-        setLikedCards((prev) => ({
-            ...prev,
-            [index]: !prev[index],
-        }));
+        setLikedCards((prev) => {
+            const updatedLikes = { ...prev };
+            const cardId = cards[index]._id;
+
+            if (updatedLikes[cardId]) {
+                // If already liked, remove from favourites
+                delete updatedLikes[cardId];
+            } else {
+                // If not liked, add to favourites
+                updatedLikes[cardId] = cards[index];
+            }
+
+            // Save updated favourites to localStorage
+            localStorage.setItem("likedDestinations", JSON.stringify(updatedLikes));
+
+            return updatedLikes;
+        });
     };
 
     const handleToggleShowAll = () => {
@@ -65,7 +84,7 @@ export default function CardComponent({ selectedCategory }) {
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                     <p className='text-white text-2xl font-Salsa'>{card.title}</p>
                                     <img 
-                                        src={likedCards[index] 
+                                        src={likedCards[card._id] 
                                             ? assets.heartfill 
                                             : assets.heart
                                         } 
