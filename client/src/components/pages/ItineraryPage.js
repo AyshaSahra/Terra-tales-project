@@ -12,6 +12,7 @@ import ItineraryCard from '../card.js/ItineraryCard';
 export default function ItineraryPage() {
     const navigate = useNavigate();
     const [itineraryCards, setItineraryCards] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     // Fetch itinerary cards from MongoDB
     useEffect(() => {
@@ -26,6 +27,12 @@ export default function ItineraryPage() {
         fetchItineraryCards();
     }, []);
 
+    // Filter cards based on search term
+    const filteredCards = itineraryCards.filter(card => 
+        card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        card.location.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div>
             <NavBar />
@@ -37,7 +44,13 @@ export default function ItineraryPage() {
                     "Discover a land where ancient history, stunning landscapes, and vibrant culture come together to create unforgettable experiences!!"  
                 </p>  
                 <div className='w-[684px] px-5 text-xs font-mono rounded-[28px] bg-white flex flex-row justify-between items-center'>
-                    <input type='text' placeholder='Search...' className='p-3 w-full py-[16px] text-base px-5 font-mono rounded-[28px] focus:outline-none'/>
+                    <input 
+                        type='text' 
+                        placeholder='Search...' 
+                        className='p-3 w-full py-[16px] text-base px-5 font-mono rounded-[28px] focus:outline-none'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                     <img src={assets.search} className='w-[30px] h-[30px] cursor-pointer'/>
                 </div>   
             </div>
@@ -47,8 +60,8 @@ export default function ItineraryPage() {
                 {/* Filter Buttons */}
                 <FilterComponent />
 
-                {/* Pass fetched itinerary cards to ItineraryCard */}
-                <ItineraryCard itineraryCards={itineraryCards} />
+                {/* Pass filtered itinerary cards to ItineraryCard */}
+                <ItineraryCard itineraryCards={filteredCards} />
             </div>
 
             {/* Hidden Gems Section */}
