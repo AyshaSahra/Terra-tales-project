@@ -18,7 +18,7 @@ const cardSchema = new mongoose.Schema({
     location: String,
     description: String,
     imageURL: String,
-    landingDescription:String,
+    landingDescription: String,
 });
 const Card = mongoose.model('Card', cardSchema, 'cards');
 
@@ -50,21 +50,6 @@ app.get('/api/cards', async (req, res) => {
     }
 });
 
-// ✅ API Endpoint to Get a Single Card by ID
-app.get('/api/cards/:id', async (req, res) => {
-    try {
-        const card = await Card.findById(req.params.id);
-        if (!card) {
-            return res.status(404).json({ message: "Card not found" });
-        }
-        res.json(card);
-    } catch (error) {
-        console.error("Error fetching card:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-});
-
-
 // ✅ API Endpoint to Get Itinerary Cards
 app.get('/api/itinerary-cards', async (req, res) => {
     try {
@@ -72,6 +57,67 @@ app.get('/api/itinerary-cards', async (req, res) => {
         res.json(itineraryCards);
     } catch (error) {
         res.status(500).json({ message: "Error fetching itinerary cards" });
+    }
+});
+
+// ✅ API Endpoint to Search Cards by Title or Location
+app.get('/api/cards/search', async (req, res) => {
+    const { query } = req.query;
+    if (!query) {
+        return res.status(400).json({ message: "Search query is required" });
+    }
+
+    try {
+        const searchResults = await Card.find({
+            $or: [
+                { title: { $regex: query, $options: "i" } },
+                { location: { $regex: query, $options: "i" } }
+            ]
+        });
+
+        res.json(searchResults);
+    } catch (error) {
+        console.error("Error fetching search results:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+app.get('/api/cards/:id', async (req, res) => {
+    try {
+        const cardId = req.params.id;
+        const card = await Card.findById(cardId);  // Ensure this uses your MongoDB model
+
+        if (!card) {
+            return res.status(404).json({ message: "Destination not found" });
+        }
+
+        res.json(card);
+    } catch (error) {
+        console.error("Error fetching destination:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
+// ✅ API Endpoint to Search Hidden Spots
+app.get('/api/hidden-spots/search', async (req, res) => {
+    const { query } = req.query;
+    if (!query) {
+        return res.status(400).json({ message: "Search query is required" });
+    }
+
+    try {
+        const searchResults = await HiddenSpot.find({
+            $or: [
+                { title: { $regex: query, $options: "i" } },
+                { location: { $regex: query, $options: "i" } }
+            ]
+        });
+
+        res.json(searchResults);
+    } catch (error) {
+        console.error("❌ Error fetching search results:", error);
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 });
 

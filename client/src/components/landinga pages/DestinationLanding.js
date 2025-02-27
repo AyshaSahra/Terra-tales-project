@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import assets from '../../constants/assets';
@@ -7,39 +7,45 @@ import FooterElement from '../footer/FooterElement';
 import HiddenCards from '../card.js/HiddenCard';
 
 export default function DestinationPage() {
-  const navigate = useNavigate()
+    const navigate = useNavigate();
     const { id } = useParams();  // ✅ Get the card ID from the URL
     const [destination, setDestination] = useState(null);
     const [loading, setLoading] = useState(true);
     const [scrollPosition, setScrollPosition] = useState(0);
 
     useEffect(() => {
-        // ✅ Fetch the card details dynamically
         const fetchDestination = async () => {
+            if (!id) return; // Ensure ID is present
+
             try {
                 const response = await axios.get(`http://localhost:5000/api/cards/${id}`);
                 setDestination(response.data);
             } catch (error) {
                 console.error("Error fetching destination:", error);
+                setDestination(null);
             } finally {
                 setLoading(false);
             }
         };
-        fetchDestination();
 
-        // ✅ Handle scroll event for animations
-        const handleScroll = () => {
-            setScrollPosition(window.scrollY);
-        };
+        fetchDestination();
+    }, [id]);
+
+    // ✅ Handle Scroll Event Efficiently
+    const handleScroll = useCallback(() => {
+        setScrollPosition(window.scrollY);
+    }, []);
+
+    useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [id]);
+    }, [handleScroll]); 
 
     // ✅ Loading and Error Handling
     if (loading) return <p className="text-white text-center">Loading...</p>;
     if (!destination) return <p className="text-white text-center">Destination not found</p>;
 
-    // ✅ Calculate animation for parallax effect
+    // ✅ Optimized Parallax Effect
     const calculateImageStyle = () => {
         const startTransform = window.innerHeight * 0.5;
         const endTransform = window.innerHeight * 1.5;
@@ -159,13 +165,13 @@ export default function DestinationPage() {
                 </div>
                 <HiddenCards />
                 <div className='w-full flex justify-center pb-10'>
-                    <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={() => {
-                            window.scrollTo(0, 0); // Scroll to top
+                    <button className='bg-white text-black font-Andika font-semibold text-m w-fit rounded-full px-6 py-2 pt-1'>
+                        <a onClick={() => {
+                            window.scrollTo(0, 0); 
                             navigate("/hidden-spot");
                         }}>
-                        Explore
-                    </a>
+                            Explore
+                        </a>
                     </button>
                 </div>
             </div>

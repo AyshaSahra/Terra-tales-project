@@ -4,24 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import assets from '../../constants/assets';
 
-export default function ItineraryCard() {
+export default function ItineraryCard({ itineraryCards }) {
     const navigate = useNavigate();
-    const [hiddenspot, setHiddenSpot] = useState([]);
     const [likedCards, setLikedCards] = useState({});
     const [showAll, setShowAll] = useState(false);
     const buttonRef = useRef(null);
-
-    useEffect(() => {
-        const fetchCards = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/itinerary-cards');
-                setHiddenSpot(response.data);
-            } catch (error) {
-                console.error('Error fetching cards:', error);
-            }
-        };
-        fetchCards();
-    }, []);
 
     const toggleLike = (index) => {
         setLikedCards((prev) => ({
@@ -41,7 +28,7 @@ export default function ItineraryCard() {
         <div>
             <div className='w-full h-auto z-10 overflow-hidden px-7 gap-6 py-9 flex flex-wrap items-start justify-center'>
                 <AnimatePresence>
-                    {(showAll ? hiddenspot : hiddenspot.slice(0, 9)).map((card, index) => (
+                    {(showAll ? itineraryCards : itineraryCards.slice(0, 9)).map((card, index) => (
                         <motion.div
                             key={card._id}
                             initial={{ opacity: 0, y: 20 }}
@@ -93,3 +80,4 @@ export default function ItineraryCard() {
         </div>
     );
 }
+

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import assets from '../../constants/assets';
 
-export default function CardComponent({ selectedCategory }) {
+export default function CardComponent({ selectedCategory, searchResults }) {
     const navigate = useNavigate();
     const [cards, setCards] = useState([]);
     const [filteredCards, setFilteredCards] = useState([]);
@@ -26,15 +26,16 @@ export default function CardComponent({ selectedCategory }) {
     }, []);
 
     useEffect(() => {
-        if (selectedCategory === "All") {
+        if (searchResults) {
+            setFilteredCards(searchResults);
+        } else if (selectedCategory === "All") {
             setFilteredCards(cards);
         } else {
             setFilteredCards(cards.filter(card => card.location === selectedCategory));
         }
-    }, [selectedCategory, cards]);
+    }, [selectedCategory, searchResults, cards]);
 
     useEffect(() => {
-        // Load liked cards from localStorage when component mounts
         const savedLikes = JSON.parse(localStorage.getItem("likedDestinations")) || {};
         setLikedCards(savedLikes);
     }, []);
@@ -45,16 +46,12 @@ export default function CardComponent({ selectedCategory }) {
             const cardId = cards[index]._id;
 
             if (updatedLikes[cardId]) {
-                // If already liked, remove from favourites
                 delete updatedLikes[cardId];
             } else {
-                // If not liked, add to favourites
                 updatedLikes[cardId] = cards[index];
             }
 
-            // Save updated favourites to localStorage
             localStorage.setItem("likedDestinations", JSON.stringify(updatedLikes));
-
             return updatedLikes;
         });
     };
@@ -106,6 +103,7 @@ export default function CardComponent({ selectedCategory }) {
                                 >
                                     Explore more
                                 </button>
+
                             </div>
                         </motion.div>
                     ))}

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import axios from "axios";
 import NavBar from "../navbar/NavBar";
 import FooterElement from "../footer/FooterElement";
 import assets from "../../constants/assets";
@@ -38,6 +38,28 @@ export default function DestinationPage() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredPlaces, setFilteredPlaces] = useState(placeData);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+
+  // Handle search query change
+  useEffect(() => {
+    if (searchQuery.trim() !== "") {
+      handleSearch();
+    } else {
+      setSearchResults(null); // Reset when search is empty
+    }
+  }, [searchQuery]);
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/cards/search?query=${searchQuery}`
+      );
+      setSearchResults(response.data);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
 
   const filterPlaces = (place) => {
     setSelectedCategory(place);
@@ -62,12 +84,15 @@ export default function DestinationPage() {
           <input
             type="text"
             placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="p-3 w-full py-[16px] text-base px-5 font-mono rounded-[28px] focus:outline-none"
           />
           <img
             src={assets.search}
             className="w-[30px] h-[30px] cursor-pointer"
             alt="search icon"
+            onClick={handleSearch}
           />
         </div>
       </div>
@@ -78,7 +103,7 @@ export default function DestinationPage() {
         <div className="flex flex-row flex-nowrap gap-4 p-9 mx-5 w-full justify-start items-center overflow-y-scroll h-auto mb-6">
           <button
             onClick={() => filterPlaces("All")}
-            className={`bg-white text-black over px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 ${
+            className={`bg-white text-black px-4 py-2 rounded-lg shadow-md hover:bg-gray-200 ${
               selectedCategory === "All" ? "font-bold" : ""
             }`}
           >
@@ -98,9 +123,7 @@ export default function DestinationPage() {
         </div>
 
         {/* Destination Cards */}
-
-        {/* Dynamic Cards Component */}
-        <CardComponent selectedCategory={selectedCategory} />
+        <CardComponent selectedCategory={selectedCategory} searchResults={searchResults} />
       </div>
 
       {/* Hidden Gems Section */}
@@ -130,7 +153,6 @@ export default function DestinationPage() {
           </div>
         </div>
       </div>
-
       {/* Footer */}
       <FooterElement />
     </div>

@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import assets from '../../constants/assets';
 
-export default function CardComponent({ selectedCategory }) {
+export default function HiddenspotCard({ selectedCategory, searchResults }) {
     const navigate = useNavigate();
     const [hiddenspot, setHiddenSpot] = useState([]);
+    const [cards, setCards] = useState([]);  // ✅ Stores the full list of hidden spots
     const [filteredCards, setFilteredCards] = useState([]);
     const [likedCards, setLikedCards] = useState({});
     const [showAll, setShowAll] = useState(false);
@@ -17,6 +18,7 @@ export default function CardComponent({ selectedCategory }) {
             try {
                 const response = await axios.get('http://localhost:5000/api/hidden-spots');
                 setHiddenSpot(response.data);
+                setCards(response.data);  // ✅ Ensure cards is updated
                 setFilteredCards(response.data);
             } catch (error) {
                 console.error('Error fetching cards:', error);
@@ -26,12 +28,14 @@ export default function CardComponent({ selectedCategory }) {
     }, []);
 
     useEffect(() => {
-        if (selectedCategory === "All") {
-            setFilteredCards(hiddenspot);
+        if (searchResults) {
+            setFilteredCards(searchResults);
+        } else if (selectedCategory === "All") {
+            setFilteredCards(hiddenspot);  // ✅ Use `hiddenspot` instead of `cards`
         } else {
             setFilteredCards(hiddenspot.filter(card => card.location === selectedCategory));
         }
-    }, [selectedCategory, hiddenspot]);
+    }, [selectedCategory, searchResults, hiddenspot]);
 
     const toggleLike = (index) => {
         setLikedCards((prev) => ({
