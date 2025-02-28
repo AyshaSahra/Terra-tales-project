@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API_KEY = "2b1eec77809e4f37953161017252202";
+const API_KEY = "6adf2d4e190d475faa760039252802";
 
 const WeatherWidget = ({ city, country }) => {
   const [weather, setWeather] = useState(null);

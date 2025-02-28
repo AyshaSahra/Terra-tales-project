@@ -5,6 +5,9 @@ import assets from '../../constants/assets';
 import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
 import HiddenCards from '../card.js/HiddenCard';
+import GoogleMapComponent from '../weather/GoogleMapComponent';
+
+const API_KEY = "6adf2d4e190d475faa760039252802";
 
 export default function DestinationPage() {
     const navigate = useNavigate();
@@ -12,7 +15,31 @@ export default function DestinationPage() {
     const [destination, setDestination] = useState(null);
     const [loading, setLoading] = useState(true);
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [weather, setWeather] = useState(null);
 
+useEffect(() => {
+    if (!destination?.location) return;  // Ensure destination and location are available
+
+    const fetchWeather = async () => {
+        try {
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${destination.location}`);
+            const data = await response.json();
+
+            setWeather({
+                temp: Math.round(data.current.temp_c),  // ✅ Get correct temperature
+                condition: data.current.condition.text, // ✅ Get weather condition text
+                icon: data.current.condition.icon, // ✅ Get weather icon
+            });
+        } catch (error) {
+            console.error("Error fetching weather data:", error);
+        }
+    };
+
+    fetchWeather();
+}, [destination]);  // ✅ Fetch weather only when destination updates
+
+
+  
     useEffect(() => {
         const fetchDestination = async () => {
             if (!id) return; // Ensure ID is present
@@ -120,7 +147,7 @@ export default function DestinationPage() {
             </div>
 
             {/* Weather and Other Sections */}
-            <div className='bg-black h-screen w-full justify-center flex flex-col items-start p-2' style={{ zIndex: 2 }}>
+            <div className='bg-black h-screen w-full justify-center flex flex-col items-start gap-14 p-2' style={{ zIndex: 2 }}>
                 <div className='w-full h-fit items-center justify-center flex' style={{ flex: 0.5 }}>
                     <div className='linear-weather w-fit h-fit bg-opacity-5 rounded-[35px]'>
                         <div className='flex flex-col bg-transparent glass-effect rounded-[35px] p-2 justify-center items-center'>
@@ -128,7 +155,7 @@ export default function DestinationPage() {
                                 <div className='flex flex-col justify-center items-center w-full px-10' style={{ flex: 2 }}>
                                     <img src={assets.weather} className='w-[130px] h-[88px]' />
                                     <p className='text-base font-Andika text-white py-1'>
-                                        Partly Cloudy
+                                        {weather?.condition || 'Loading...'}
                                     </p>
                                 </div>
                                 <div className='flex items-center justify-center' style={{ flex: 0.2 }}>
@@ -137,19 +164,22 @@ export default function DestinationPage() {
                                 <div className='w-full flex flex-col items-center justify-center px-10' style={{ flex: 2 }}>
                                     <div className='w-full'>
                                         <p className='text-[15px] text-white font-UbuntuBold uppercase text-nowrap py-1'>
-                                            {destination.author}
+                                        {destination.title}
                                         </p>
-                                        <p className='text-[11px] text-white font-Andika'>
-                                            Monday
+                                        <p className='text-[15px] text-white font-UbuntuBold uppercase text-nowrap py-1'>
+                                        {destination.location}
                                         </p>
                                         <p className='text-[33px] font-bold text-white font-salsa'>
-                                            22°C
+                                            {weather?.temp ? `${weather.temp}°C` : 'Loading...'}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='w-full h-fit items-center justify-center flex' style={{ flex:0.3 }}>
+                    <GoogleMapComponent/>
                 </div>
             </div>
 
