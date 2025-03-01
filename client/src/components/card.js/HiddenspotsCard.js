@@ -7,7 +7,7 @@ import assets from '../../constants/assets';
 export default function HiddenspotCard({ selectedCategory, searchResults }) {
     const navigate = useNavigate();
     const [hiddenspot, setHiddenSpot] = useState([]);
-    const [cards, setCards] = useState([]);  // ✅ Stores the full list of hidden spots
+    const [cards, setCards] = useState([]);
     const [filteredCards, setFilteredCards] = useState([]);
     const [likedCards, setLikedCards] = useState({});
     const [showAll, setShowAll] = useState(false);
@@ -18,7 +18,7 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
             try {
                 const response = await axios.get('http://localhost:5000/api/hidden-spots');
                 setHiddenSpot(response.data);
-                setCards(response.data);  // ✅ Ensure cards is updated
+                setCards(response.data);
                 setFilteredCards(response.data);
             } catch (error) {
                 console.error('Error fetching cards:', error);
@@ -27,21 +27,36 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
         fetchCards();
     }, []);
 
+    // ✅ Load liked states from localStorage when component mounts
+    useEffect(() => {
+        const savedLikes = JSON.parse(localStorage.getItem("likedHiddenSpots")) || {};
+        setLikedCards(savedLikes);
+    }, []);
+
     useEffect(() => {
         if (searchResults) {
             setFilteredCards(searchResults);
         } else if (selectedCategory === "All") {
-            setFilteredCards(hiddenspot);  // ✅ Use `hiddenspot` instead of `cards`
+            setFilteredCards(hiddenspot);
         } else {
             setFilteredCards(hiddenspot.filter(card => card.location === selectedCategory));
         }
     }, [selectedCategory, searchResults, hiddenspot]);
 
-    const toggleLike = (index) => {
-        setLikedCards((prev) => ({
-            ...prev,
-            [index]: !prev[index],
-        }));
+    // ✅ Function to toggle like and update localStorage
+    const toggleLike = (card) => {
+        setLikedCards((prev) => {
+            const updatedLikes = { ...prev };
+
+            if (updatedLikes[card._id]) {
+                delete updatedLikes[card._id]; // Remove from liked
+            } else {
+                updatedLikes[card._id] = card; // Add to liked
+            }
+
+            localStorage.setItem("likedHiddenSpots", JSON.stringify(updatedLikes));
+            return updatedLikes;
+        });
     };
 
     const handleToggleShowAll = () => {
@@ -55,7 +70,7 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
         <div>
             <div className='w-full h-auto z-10 overflow-hidden px-7 gap-6 py-9 flex flex-wrap items-start justify-center'>
                 <AnimatePresence>
-                    {(showAll ? filteredCards : filteredCards.slice(0, 9)).map((card, index) => (
+                    {(showAll ? filteredCards : filteredCards.slice(0, 9)).map((card) => (
                         <motion.div
                             key={card._id}
                             initial={{ opacity: 0, y: 20 }}
@@ -69,13 +84,10 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                     <p className='text-white text-2xl font-Salsa'>{card.title}</p>
                                     <img 
-                                        src={likedCards[index] 
-                                            ? assets.heartfill 
-                                            : assets.heart
-                                        } 
+                                        src={likedCards[card._id] ? assets.heartfill : assets.heart} 
                                         alt='heart' 
                                         className='w-6 h-6 ml-auto mx-2 cursor-pointer transition-all duration-300' 
-                                        onClick={() => toggleLike(index)}
+                                        onClick={() => toggleLike(card)}
                                     />
                                 </div>
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>

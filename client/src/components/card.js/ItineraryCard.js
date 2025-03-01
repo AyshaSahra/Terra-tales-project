@@ -7,15 +7,46 @@ import assets from '../../constants/assets';
 export default function ItineraryCard({ itineraryCards }) {
     const navigate = useNavigate();
     const [likedCards, setLikedCards] = useState({});
+    const [filteredCards, setFilteredCards] = useState([]);
+    const [itinerary, setItinerary] = useState([]);
+    const [cards, setCards] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const buttonRef = useRef(null);
 
-    const toggleLike = (index) => {
-        setLikedCards((prev) => ({
-            ...prev,
-            [index]: !prev[index],
-        }));
+    useEffect(() => {
+        const fetchCards = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/itinerary-cards');
+                setItinerary(response.data);
+                setCards(response.data);
+                setFilteredCards(response.data);
+            } catch (error) {
+                console.error('Error fetching cards:', error);
+            }
+        };
+        fetchCards();
+    }, []);
+
+    useEffect(() => {
+        const savedLikes = JSON.parse(localStorage.getItem("likedItinerary")) || {};
+        setLikedCards(savedLikes);
+    }, []);
+
+    const toggleLike = (card) => {
+        setLikedCards((prev) => {
+            const updatedLikes = { ...prev };
+    
+            if (updatedLikes[card._id]) {
+                delete updatedLikes[card._id];
+            } else {
+                updatedLikes[card._id] = card;
+            }
+    
+            localStorage.setItem("likedItineraryPlaces", JSON.stringify(updatedLikes));
+            return updatedLikes;
+        });
     };
+    
 
     const handleToggleShowAll = () => {
         setShowAll(!showAll);
@@ -28,7 +59,7 @@ export default function ItineraryCard({ itineraryCards }) {
         <div>
             <div className='w-full h-auto z-10 overflow-hidden px-7 gap-6 py-9 flex flex-wrap items-start justify-center'>
                 <AnimatePresence>
-                    {(showAll ? itineraryCards : itineraryCards.slice(0, 9)).map((card, index) => (
+                    {(showAll ? itineraryCards : itineraryCards.slice(0, 9)).map((card) => (
                         <motion.div
                             key={card._id}
                             initial={{ opacity: 0, y: 20 }}
@@ -42,13 +73,13 @@ export default function ItineraryCard({ itineraryCards }) {
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                     <p className='text-white text-2xl font-Salsa'>{card.title}</p>
                                     <img 
-                                        src={likedCards[index] 
+                                        src={likedCards[card._id] 
                                             ? assets.heartfill 
                                             : assets.heart
                                         } 
                                         alt='heart' 
                                         className='w-6 h-6 ml-auto mx-2 cursor-pointer transition-all duration-300' 
-                                        onClick={() => toggleLike(index)}
+                                        onClick={() => toggleLike(card)}
                                     />
                                 </div>
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
