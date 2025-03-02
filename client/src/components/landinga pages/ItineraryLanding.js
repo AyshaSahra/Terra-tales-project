@@ -4,66 +4,47 @@ import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
 import cards from '../../constants/cards';
 import { useNavigate } from 'react-router-dom';
-
-const images = {
-    day1: [
-      {image:assets.image1,
-        heading:'Lorem Ipsum',
-        button:'Explore',
-        location:assets.location,
-      },
-      {image:assets.image2,
-        heading:'Lorem Ipsum',
-        button:'Explore',
-        location:assets.location,
-      },
-      {image:assets.image3,
-        heading:'Lorem Ipsum',
-        button:'Explore',
-        location:assets.location,
-      },
-    ],
-    day2: [
-        {image:assets.image2,
-            heading:'Lorem Ipsum',
-            button:'Explore',
-            location:assets.location,
-        },
-        {image:assets.image3,
-            heading:'Lorem Ipsum',
-            button:'Explore',
-            location:assets.location,
-        },
-        {image:assets.image1,
-            heading:'Lorem Ipsum',
-            button:'Explore',
-            location:assets.location,
-        },
-    ],
-    day3: [
-        {image:assets.image3,
-            heading:'Lorem Ipsum',
-            button:'Explore',
-            location:assets.location,
-        },
-        {image:assets.image1,
-            heading:'Lorem Ipsum',
-            button:'Explore',
-            location:assets.location,
-        },
-        {image:assets.image2,
-            heading:'Lorem Ipsum',
-            button:'Explore',
-            location:assets.location,
-        },
-    ],
-  };
+import HiddenCard from '../card.js/HiddenCard';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 export default function ItineraryLanding() {
-  const navigate = useNavigate()
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [selectedDay, setSelectedDay] = useState("day1");
+  const navigate = useNavigate();
+  const { id } = useParams(); 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [itinerary, setItinerary] = useState({});  // ✅ Default to empty object to avoid errors
+  const [loading, setLoading] = useState(true);
+  const [cards, setCards] = useState([]);
+  const images = itinerary.days || {};  // ✅ Use the fetched itinerary days dynamically
 
+  // Function to split cards into days dynamically
+const distributeCards = (cards, limit) => {
+  let daysData = {};
+  let dayCount = 1;
+  let currentDayCards = [];
+
+  cards.forEach((card) => {
+    if (currentDayCards.length < limit) {
+      currentDayCards.push(card);
+    } else {
+      daysData[`day${dayCount}`] = [...currentDayCards]; // Store previous day's data
+      currentDayCards = [card]; // Start a new day
+      dayCount++;
+    }
+  });
+
+  if (currentDayCards.length > 0) {
+    daysData[`day${dayCount}`] = currentDayCards; // Add last day's cards
+  }
+
+  return daysData;
+};
+  // Filter cards based on itinerary title
+ const filteredCards = cards.filter(card => card.location === itinerary.title);
+ const cardsPerDay = 3; // Max 3 cards per day
+ const daysData = distributeCards(filteredCards, cardsPerDay);
+const availableDays = Object.keys(daysData); // Get only available days
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -72,6 +53,35 @@ export default function ItineraryLanding() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  
+
+  useEffect(() => {
+    const fetchItinerary = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/itinerary-cards/${id}`);
+            setItinerary(response.data);
+        } catch (error) {
+            console.error("Error fetching itinerary:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const fetchCards = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/cards');
+            setCards(response.data);
+        } catch (error) {
+            console.error('Error fetching cards:', error);
+        }
+    };
+
+    fetchItinerary();
+    fetchCards();
+}, [id]);
+ // ✅ Ensures useEffect runs when id changes
+
 
   // Calculate image transform based on scroll
   const calculateImageStyle = () => {
@@ -102,7 +112,7 @@ export default function ItineraryLanding() {
       opacity: 1,
       width: progress === 0 ? '100vw' : '482px',
       height: progress === 0 ? '100vh' : '594px',
-      backgroundImage: `url(${assets.beach})`,
+      backgroundImage: `url(${itinerary.src})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       position: 'fixed',
@@ -122,12 +132,12 @@ export default function ItineraryLanding() {
         <div className="relative h-full flex items-end justify-start">
           <div className="text-white text-center p-8 bg-opacity-30 rounded-lg" style={{ zIndex: 20 }}>
             <p className='font-Pottaone min-[1440px]:text-7xl text-5xl pb-3 text-white'>
-                Marina Beach
+                {itinerary.title}
             </p>
             <div className='flex flex-row items-center'>
             <img src={assets.location} className='w-[18px] h-[18px]'/>
             <p className='font-Ubuntu min-[1440px]:text-5xl pl-1 text-2xl text-white'>
-                Chennai
+                {itinerary.location}
             </p>
             </div>
           </div>
@@ -140,53 +150,81 @@ export default function ItineraryLanding() {
         <div className="text-white p-8 bg-opacity-30 rounded-lg" style={{ zIndex: 20 }}>
             <div className='flex flex-col justify-start w-full'>
             <p className='font-Pottaone min-[1440px]:text-7xl text-5xl pb-3 text-white'>
-                Marina Beach
+                {itinerary.title}
             </p>
             <div className='flex flex-row items-center'>
                 <img src={assets.location} className='w-[18px] h-[18px]'/>
                 <p className='font-Ubuntu min-[1440px]:text-5xl pl-1 text-2xl text-white'>
-                    Chennai
+                    {itinerary.location}
                 </p>
             </div>
             </div>
         </div>
           <p className="font-Ubuntu text-2xl text-white" >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            {itinerary.itinerarydescription}
           </p>
         </div>
       </div>
       {/*Section 3 */}
       <div className='bg-black h-screen w-full justify-center flex flex-col items-center p-2' >
+      <div className='flex flex-col items-center justify-center'>
+                    <p className='text-white text-4xl font-McLaren text-center pt-2'>
+                        Itierary for {itinerary.title}
+                    </p>
+                    <p className='font-Andika text-white text-center min-[1440px]:text-base text-m py-2 w-full'>
+                        Plan your journey
+                    </p>
+            </div> 
       <div className="flex flex-col items-center w-full justify-center p-6 bg-black h-full">
-      <div className="relative w-full max-w-4xl">
-        <div className="absolute -top-10 left-4 flex space-x-4 z-10">
-          {Object.keys(images).map((day) => (
-            <div
-              key={day}
-              onClick={() => setSelectedDay(day)}
-              className={`px-6 pb-24 hover:cursor-pointer pt-2 z-20 flex items-start justify-center text-white rounded-t-md transition-all duration-300 ${
-                selectedDay === day ? "bg-[#252525f5] text-lg scale-110" : "linear-weather glass-effect text-sm"
-              }`}
-            >
-              {day.replace("day", "Day ")}
+    <div className="relative w-full max-w-4xl">
+      {/* Day Selector - Shows only available days */}
+      <div className="absolute -top-10 left-4 flex space-x-4 z-10">
+        {availableDays.map((day, index) => (
+          <div
+            key={index}
+            onClick={() => setSelectedDay(day)}
+            className={`px-6 pb-24 hover:cursor-pointer pt-2 z-20 flex items-start justify-center text-white rounded-t-md transition-all duration-300 ${
+              selectedDay === day ? "bg-[#252525f5] text-lg scale-110" : "linear-weather glass-effect text-sm"
+            }`}
+          >
+            <p>
+              Day <span>{index + 1}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Cards Section - Displays only the available day's cards */}
+      <div className="linear-weather glass-effect p-5 rounded-lg w-full relative z-20">
+        {daysData[selectedDay]?.map((card, index) => (
+          <div
+            key={index}
+            className="relative bg-center bg-cover w-full h-32 rounded-3xl my-5"
+            style={{ backgroundImage: `url(${card.imageURL})` }}
+          >
+            <div className="w-full h-full bg-opacity-50 bg-black rounded-3xl flex flex-row justify-stretch items-center gap-24 p-5">
+              <div className='flex flex-col h-full w-full gap-2'>
+                <p className=" flex items-center justify-between text-white font-McLaren text-xl font-semibold">
+                  {card.title}
+                </p>
+                <p className='flex items-center justify-between pl-5 text-white text-lg font-Andika'>
+                  {card.description}
+                </p>
+                </div>
+
+              <button 
+                className='bg-white text-black font-Andika font-semibold text-nowrap h-fit content-center text-m rounded-full px-3 py-2 pt-1'
+                onClick={() => navigate(`/destination/${card._id}`)}
+                 >
+                  Explore more
+                </button>
             </div>
-          ))}
-        </div>
-        <div className="linear-weather glass-effect p-5 rounded-lg w-full relative z-20">
-        {images[selectedDay].map((item, index) => (
-            <div key={index} className="relative bg-center bg-cover w-full h-32 rounded-3xl my-5" style={{backgroundImage:`url(${item.image})`}}>
-              <div className="w-full h-full bg-opacity-50 bg-black rounded-3xl flex flex-row p-5" >
-              <p className="absolute flex items-center justify-between text-white text-lg font-semibold">
-                {item.heading}
-              </p>
-              </div>
-            </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
+
       </div>
       {/* Section 4*/}
       <div className='w-full bg-black'>
@@ -201,43 +239,18 @@ export default function ItineraryLanding() {
             </div>
 
                 {/*Hidden gems cards*/}
-                <div className='w-full bg-black p-4'>
-                <div className='flex gap-8 flex-row items-center p-2 pb-4 mx-14 overflow-scroll'>
-                    {cards.map((card,index) =>(
-                      <div>
-                        <div className='w-[350px] h-[470px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[245px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${card.src})`}}>
-                        <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-16 transition-all duration-500 overflow-hidden'>
-                        <div className='flex flex-row h-fit w-full items-center px-2 pt-3'>
-                           <p className='text-white text-2xl font-Salsa'>
-                                    {card.title}
-                            </p>
-                            <img src={card.heart_icon} alt='location' className='w-6 h-6 ml-auto mx-2'/> 
-                        </div>
-                        <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
-                            <img src={card.location_icon} className='w-[18px] h-[18px]'/>
-                            <p className='text-white text-sm font-Andika mx-1'>
-                                Lorem
-                            </p>
-                         </div>
-                         <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-                            {card.text}           
-                        </p>
-                            <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
-                                {card.button} 
-                            </button>
-                        </div>
-                        </div>
-                      </div>  
-                    ))}
-                </div>
-                <div className='w-full flex justify-center py-75'>
-                    <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={() => navigate("/hidden-spot")}>
-                            Explore
-                        </a>
-                    </button>
-                </div>
-            </div>
+                <HiddenCard/>
+                <div className="w-full flex justify-center pb-8">
+            <button
+              className="bg-white text-black font-Andika font-semibold content-center text-m w-fit rounded-full px-6 py-2 pt-1"
+              onClick={() => {
+                window.scrollTo(0, 0); // Scroll to top
+                navigate("/hidden-spot");
+            }}
+            >
+              Explore
+            </button>
+          </div>
             </div>
       <FooterElement/>
     </div>

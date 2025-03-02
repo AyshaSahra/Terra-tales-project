@@ -116,7 +116,8 @@ export default function HomePage() {
                                      {data[0]?.description || "Loading..."}
                                     </p>
                                     <button 
-                                    className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() => navigate(`/destination/${data[0]._id}`)}>
                                         Explore more 
                                     </button>
                                 
@@ -127,7 +128,7 @@ export default function HomePage() {
                     {/*Card 2*/}
                     <div className='bg-black full'>
                         <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[1]?.imageURL || 'fallback.jpg'})`}}>
-                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:pt-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 2*/}
@@ -154,7 +155,8 @@ export default function HomePage() {
                                         {/*text 2*/}
                                         {data[1]?.description || "Loading..."}
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() => navigate(`/destination/${data[1]._id}`)}>
                                         Explore more 
                                     </button>
                                 
@@ -168,7 +170,7 @@ export default function HomePage() {
                         {/*Card 3*/}
                         <div className='bg-black full'>
                         <div className='h-[340px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[2]?.imageURL || 'fallback.jpg'})`}}>
-                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:pt-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 3*/} 
@@ -195,7 +197,8 @@ export default function HomePage() {
                                     {/*text 3*/}
                                     {data[2]?.description || "Loading..."}
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() => navigate(`/destination/${data[2]._id}`)}>
                                         Explore more 
                                     </button>
                                 
@@ -233,7 +236,8 @@ export default function HomePage() {
                                     {/*text 4*/}
                                     {data[3]?.description || "Loading..."}
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() => navigate(`/destination/${data[3]._id}`)}>
                                         Explore more 
                                     </button>
                                 
@@ -274,7 +278,8 @@ export default function HomePage() {
                                     {/*text 5*/}
                                     {data[4]?.description || "Loading..."}
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() => navigate(`/destination/${data[4]._id}`)}>
                                         Explore more 
                                     </button>
                                 
@@ -285,7 +290,7 @@ export default function HomePage() {
                     {/*Card 6*/}
                     <div className='bg-black full'> {/**/}
                     <div className='h-[350px] rounded-[37px] bg-cover group bg-center background opacity-[90%] flex justify-center items-end px-2 pb-2 pt-[195px] hover:py-2 transition-all duration-500'style={{backgroundImage:`url(${data[5]?.imageURL || 'fallback.jpg'})`}}>
-                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:py-2 transition-all duration-500 overflow-hidden'>
+                            <div className='w-full h-full bg-black opacity-[80%] flex flex-col items-center px-4 py-4 rounded-[37px] group-hover:pt-16 transition-all duration-500 overflow-hidden'>
                                 <div className='flex flex-row h-fit w-full items-center px-2 pt-3'> 
                                 <p className='text-white text-2xl font-Salsa'>
                                     {/*Title 6*/} 
@@ -312,7 +317,8 @@ export default function HomePage() {
                                     {/*text 6*/}
                                     {data[5]?.description || "Loading..."}
                                     </p>
-                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                    <button className='bg-white  text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() => navigate(`/destination/${data[5]._id}`)}>
                                         Explore more 
                                     </button>
                                 
@@ -379,7 +385,9 @@ export default function HomePage() {
                 <HiddenCards cards={cards}/>
                 <div className='w-full flex justify-center pb-8'>
                     <button className='bg-white  text-black font-Andika font-semibold  content-center text-m w-fit rounded-full px-6 py-2 pt-1'>
-                    <a onClick={handleOpenPopup}>
+                    <a onClick={() =>{ 
+                                        window.scrollTo(0, 0);
+                                        navigate(`/hidden-spot`)}}>
                             Explore
                         </a>
                     </button>

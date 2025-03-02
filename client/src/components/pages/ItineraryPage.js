@@ -8,6 +8,7 @@ import cards from '../../constants/cards';
 import FilterComponent from '../card.js/FilterComponent';
 import HiddenCards from '../card.js/HiddenCard';
 import ItineraryCard from '../card.js/ItineraryCard';
+import HiddenCard from '../card.js/HiddenCard';
 
 export default function ItineraryPage() {
     const navigate = useNavigate();
@@ -74,7 +75,18 @@ export default function ItineraryPage() {
                         "Unlock the unknown"
                     </p>
                 </div>
-                <HiddenCards cards={cards} />
+                <HiddenCard/>
+                <div className="w-full flex justify-center pb-8">
+            <button
+              className="bg-white text-black font-Andika font-semibold content-center text-m w-fit rounded-full px-6 py-2 pt-1"
+              onClick={() => {
+                window.scrollTo(0, 0); // Scroll to top
+                navigate("/hidden-spot");
+            }}
+            >
+              Explore
+            </button>
+          </div>
             </div>
             
             <FooterElement />

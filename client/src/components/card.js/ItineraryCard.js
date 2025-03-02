@@ -28,10 +28,10 @@ export default function ItineraryCard({ itineraryCards }) {
     }, []);
 
     useEffect(() => {
-        const savedLikes = JSON.parse(localStorage.getItem("likedItinerary")) || {};
+        const savedLikes = JSON.parse(localStorage.getItem("likedItineraryPlaces")) || {};
         setLikedCards(savedLikes);
     }, []);
-
+    
     const toggleLike = (card) => {
         setLikedCards((prev) => {
             const updatedLikes = { ...prev };
@@ -89,9 +89,15 @@ export default function ItineraryCard({ itineraryCards }) {
                                 <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     {card.text}
                                 </p>
-                                <button className='bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                <button 
+                                    className='bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                                    onClick={() =>{ 
+                                        window.scrollTo(0, 0);
+                                        navigate(`/itinerary/${card._id}`)}}
+                                >
                                     Explore more
                                 </button>
+
                             </div>
                         </motion.div>
                     ))}

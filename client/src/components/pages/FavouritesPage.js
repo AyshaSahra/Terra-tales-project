@@ -218,7 +218,9 @@ export default function FavouritePage() {
                                     </p>
                                     <button 
                                     className='bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
-                                    onClick={() => navigate(`/hidden-spots/${place._id}`)}
+                                    onClick={() =>{ 
+                                        window.scrollTo(0, 0);
+                                        navigate(`/itinerary/${place._id}`)}}
                                 >
                                     Explore more
                                 </button>

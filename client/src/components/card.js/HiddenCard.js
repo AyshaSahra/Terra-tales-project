@@ -2,8 +2,10 @@ import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
 import assets from "../../constants/assets";
+import { useNavigate } from "react-router-dom";
 
 const HiddenCard = () => {
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [hiddenspot, setHiddenSpot] = useState([]);
   const [likedCards, setLikedCards] = useState({});
@@ -114,7 +116,8 @@ const HiddenCard = () => {
                   <p className="text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     {spot.text}
                   </p>
-                  <button className="bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1">
+                  <button className="bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1"
+                  onClick={() => navigate(`/hidden-spot/${spot._id}`)}>
                     Explore
                   </button>
                 </div>

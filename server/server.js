@@ -24,10 +24,11 @@ const Card = mongoose.model('Card', cardSchema, 'cards');
 
 // ✅ Define Itinerary Card Schema
 const itineraryCardSchema = new mongoose.Schema({
-    title: String,
-    location: String,  // ✅ Add location
-    text: String,  // ✅ Rename 'description' to 'text'
-    src: String  // ✅ Rename 'imageURL' to 'src'
+    title: { type: String, required: true },  // Itinerary title
+    location: { type: String, required: true },  // Itinerary location
+    text: { type: String, required: true },  // Description of the itinerary
+    src: { type: String, required: true },  // Main image URL for itinerary
+    days: [{ type: String, required: true }],  // Just store the list of days (e.g., "Day 1", "Day 2")
 });
 const ItineraryCard = mongoose.model('ItineraryCard', itineraryCardSchema, 'itinerary-cards');
 
@@ -133,6 +134,22 @@ app.get('/api/hidden-spots/search', async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 });
+
+app.get('/api/itinerary-cards/:id', async (req, res) => {
+    try {
+        const itinerary = await ItineraryCard.findById(req.params.id);
+        if (!itinerary) {
+            return res.status(404).json({ error: 'Itinerary not found' });
+        }
+        res.json(itinerary);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
 
 // ✅ API Endpoint to Get Hidden Spots
 app.get('/api/hidden-spots', async (req, res) => {

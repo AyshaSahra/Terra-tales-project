@@ -89,5 +89,33 @@
     "description": "A 16th-century fort known for its unique structure, grand moat, and Jalakandeswarar Temple inside.",
     "landingDescription": "Vellore Fort, a 16th-century marvel, boasts a massive moat, ancient temples, and rich history. Its architectural brilliance and strategic importance make it a must-visit site for history enthusiasts.",
     "imageURL": "https://images.unsplash.com/photo-1665003739938-b7fa7c1c1bfc?q=80&w=1936&auto=format&fit=crop"
+  },
+  {
+    "title": "Kapaleeshwarar Temple",
+    "location": "Chennai",
+    "description": "A historic Dravidian-style temple dedicated to Lord Shiva, known for its intricate carvings and spiritual ambiance.",
+    "landingDescription": "Kapaleeshwarar Temple is an architectural marvel with a towering gopuram, rich traditions, and a peaceful atmosphere, offering an insight into Chennai’s cultural heritage.",
+    "imageURL": "https://images.unsplash.com/photo-1606611616456-6a5d7e9f5a4c?q=80&w=2127&auto=format&fit=crop"
+  },
+  {
+    "title": "Santhome Basilica",
+    "location": "Chennai",
+    "description": "A neo-Gothic church built over the tomb of St. Thomas, one of Jesus' apostles, offering a serene and historical experience.",
+    "landingDescription": "Santhome Basilica is a stunning white church with historic significance, peaceful ambiance, and breathtaking interiors, attracting visitors seeking spirituality and history.",
+    "imageURL": "https://images.unsplash.com/photo-1642954408085-9cb31edb88b5?q=80&w=2127&auto=format&fit=crop"
+  },
+  {
+    "title": "Valluvar Kottam",
+    "location": "Chennai",
+    "description": "A monument dedicated to Tamil poet Thiruvalluvar, featuring a grand chariot structure and inscriptions from the Tirukkural.",
+    "landingDescription": "Valluvar Kottam stands as a tribute to Tamil literature, with intricate architecture, peaceful surroundings, and a massive stone chariot honoring the legendary poet.",
+    "imageURL": "https://images.unsplash.com/photo-1598721734904-079fa984a13c?q=80&w=2127&auto=format&fit=crop"
+  },
+  {
+    "title": "Guindy National Park",
+    "location": "Chennai",
+    "description": "A lush green wildlife sanctuary in the heart of Chennai, home to deer, blackbucks, and various bird species.",
+    "landingDescription": "Guindy National Park is a peaceful green escape in the city, offering scenic trails, rich biodiversity, and a chance to experience nature amid urban life.",
+    "imageURL": "https://images.unsplash.com/photo-1601066475440-77cbe6c28f0e?q=80&w=2127&auto=format&fit=crop"
   }
 ]

@@ -26,12 +26,11 @@ function App() {
             <Route path="/favourite" element={<FavouritePage/>} />
             <Route path="/SignUp" element={<SignUp/>} />
             <Route path='/login' element={<LoginPage/>}/>
-            <Route path='/place-landing' element={<DestinationLanding/>}/>
-            <Route path='/itinerary-landing' element={<ItineraryLanding/>}/>
             <Route path='/weather' element={<WeatherWidget/>}/>
             <Route path='/maps' element={<GoogleMapComponent/>}/>
             <Route path="/destination/:id" element={<DestinationLanding/>} />
             <Route path="/hidden-spot/:id" element={<HiddenLanding/>} />
+            <Route path="/itinerary/:id" element={<ItineraryLanding/>} />
           </Routes>
           
     </div>

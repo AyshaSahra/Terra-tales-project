@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ExtendableCard() {
     const [cards, setCards] = useState([]);
     const [selected, setSelected] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCards = async () => {
@@ -47,7 +49,11 @@ export default function ExtendableCard() {
                             </motion.p>
                         )}
                         {selected === index && (
-                            <button className="bg-white text-black font-Andika font-medium my-4 content-center w-1/2 rounded-full px-3 py-2 pt-1">
+                            <button className="bg-white text-black font-Andika font-medium my-4 content-center w-1/2 rounded-full px-3 py-2 pt-1"
+                            onClick={() =>{ 
+                                window.scrollTo(0, 0);
+                                navigate(`/itinerary/${card._id}`)}}
+                            >
                                 Explore
                             </button>
                         )}
