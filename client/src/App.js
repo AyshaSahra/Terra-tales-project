@@ -12,6 +12,7 @@ import DestinationLanding from './components/landinga pages/DestinationLanding'
 import ItineraryLanding from './components/landinga pages/ItineraryLanding';
 import WeatherWidget from '../src/components/weather/WeatherWidget'
 import GoogleMapComponent from '../src/components/weather/GoogleMapComponent'
+import HiddenLanding from './components/landinga pages/HiddenLanding';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path='/weather' element={<WeatherWidget/>}/>
             <Route path='/maps' element={<GoogleMapComponent/>}/>
             <Route path="/destination/:id" element={<DestinationLanding/>} />
+            <Route path="/hidden-spot/:id" element={<HiddenLanding/>} />
           </Routes>
           
     </div>

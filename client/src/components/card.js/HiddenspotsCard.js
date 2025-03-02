@@ -7,7 +7,6 @@ import assets from '../../constants/assets';
 export default function HiddenspotCard({ selectedCategory, searchResults }) {
     const navigate = useNavigate();
     const [hiddenspot, setHiddenSpot] = useState([]);
-    const [cards, setCards] = useState([]);
     const [filteredCards, setFilteredCards] = useState([]);
     const [likedCards, setLikedCards] = useState({});
     const [showAll, setShowAll] = useState(false);
@@ -18,7 +17,6 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
             try {
                 const response = await axios.get('http://localhost:5000/api/hidden-spots');
                 setHiddenSpot(response.data);
-                setCards(response.data);
                 setFilteredCards(response.data);
             } catch (error) {
                 console.error('Error fetching cards:', error);
@@ -27,7 +25,6 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
         fetchCards();
     }, []);
 
-    // ✅ Load liked states from localStorage when component mounts
     useEffect(() => {
         const savedLikes = JSON.parse(localStorage.getItem("likedHiddenSpots")) || {};
         setLikedCards(savedLikes);
@@ -43,17 +40,14 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
         }
     }, [selectedCategory, searchResults, hiddenspot]);
 
-    // ✅ Function to toggle like and update localStorage
     const toggleLike = (card) => {
         setLikedCards((prev) => {
             const updatedLikes = { ...prev };
-
             if (updatedLikes[card._id]) {
-                delete updatedLikes[card._id]; // Remove from liked
+                delete updatedLikes[card._id];
             } else {
-                updatedLikes[card._id] = card; // Add to liked
+                updatedLikes[card._id] = card;
             }
-
             localStorage.setItem("likedHiddenSpots", JSON.stringify(updatedLikes));
             return updatedLikes;
         });
@@ -87,7 +81,7 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
                                         src={likedCards[card._id] ? assets.heartfill : assets.heart} 
                                         alt='heart' 
                                         className='w-6 h-6 ml-auto mx-2 cursor-pointer transition-all duration-300' 
-                                        onClick={() => toggleLike(card)}
+                                        onClick={(e) => { e.stopPropagation(); toggleLike(card); }} // ✅ Prevents click propagation
                                     />
                                 </div>
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
@@ -97,7 +91,9 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
                                 <p className='text-white text-sm pt-6 font-Andika mx-6 text-balance mb-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
                                     {card.text}
                                 </p>
-                                <button className='bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'>
+                                <button className='bg-white text-black font-Andika font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 content-center text-m w-1/2 rounded-full px-3 py-2 pt-1'
+                            onClick={() => navigate(`/hidden-spot/${card._id}`)} // ✅ Navigate to DestinationPage
+                            >
                                     Explore more
                                 </button>
                             </div>

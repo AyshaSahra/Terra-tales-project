@@ -98,6 +98,19 @@ app.get('/api/cards/:id', async (req, res) => {
     }
 });
 
+// ✅ API Endpoint to Get a Hidden Spot by ID
+app.get('/api/hidden-spots/:id', async (req, res) => {
+    try {
+        const hiddenSpot = await HiddenSpot.findById(req.params.id);
+        if (!hiddenSpot) {
+            return res.status(404).json({ message: "Hidden spot not found" });
+        }
+        res.json(hiddenSpot);
+    } catch (error) {
+        console.error("Error fetching hidden spot:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 // ✅ API Endpoint to Search Hidden Spots
 app.get('/api/hidden-spots/search', async (req, res) => {
