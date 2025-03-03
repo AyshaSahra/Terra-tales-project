@@ -19,6 +19,8 @@ const cardSchema = new mongoose.Schema({
     description: String,
     imageURL: String,
     landingDescription: String,
+    lat: Number,
+    lng: Number,
 });
 const Card = mongoose.model('Card', cardSchema, 'cards');
 
@@ -38,6 +40,8 @@ const hiddenSpotSchema = new mongoose.Schema({
     src: String,
     location: String,
     text: String,
+    lat: Number,
+    lng: Number,
 });
 const HiddenSpot = mongoose.model('HiddenSpot', hiddenSpotSchema, 'hidden-spots');
 

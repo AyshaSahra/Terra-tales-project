@@ -8,12 +8,13 @@ const containerStyle = {
 };
 
 const GoogleMapComponent = ({ lat, lng }) => {
-  const center = { lat: lat || 13.0500, lng: lng || 80.2824 }; // Default to Chennai
+  // Use provided lat/lng; default to Chennai if missing
+  const coordinates = lat && lng ? { lat, lng } : { lat: 13.0500, lng: 80.2824 };
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDf10V6TzafskWO0mjyYZmzb7_ts1J1Itk">
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>
-        <Marker position={center} />
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+      <GoogleMap mapContainerStyle={containerStyle} center={coordinates} zoom={13}>
+        <Marker position={coordinates} />
       </GoogleMap>
     </LoadScript>
   );

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import assets from '../../constants/assets';
 
-export default function HiddenspotCard({ selectedCategory, searchResults }) {
+export default function HiddenspotCard({ selectedCategory, searchQuery }) {
     const navigate = useNavigate();
     const [hiddenspot, setHiddenSpot] = useState([]);
     const [filteredCards, setFilteredCards] = useState([]);
@@ -31,14 +31,24 @@ export default function HiddenspotCard({ selectedCategory, searchResults }) {
     }, []);
 
     useEffect(() => {
-        if (searchResults) {
-            setFilteredCards(searchResults);
-        } else if (selectedCategory === "All") {
-            setFilteredCards(hiddenspot);
-        } else {
-            setFilteredCards(hiddenspot.filter(card => card.location === selectedCategory));
+        let filtered = hiddenspot;
+
+        // Filter by selected category
+        if (selectedCategory !== "All") {
+            filtered = filtered.filter(card => card.location === selectedCategory);
         }
-    }, [selectedCategory, searchResults, hiddenspot]);
+
+        // Filter by search query
+        if (searchQuery.trim() !== "") {
+            const query = searchQuery.toLowerCase();
+            filtered = filtered.filter(card => 
+                card.title.toLowerCase().includes(query) || 
+                card.location.toLowerCase().includes(query)
+            );
+        }
+
+        setFilteredCards(filtered);
+    }, [selectedCategory, searchQuery, hiddenspot]);
 
     const toggleLike = (card) => {
         setLikedCards((prev) => {

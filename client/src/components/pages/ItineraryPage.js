@@ -59,7 +59,7 @@ export default function ItineraryPage() {
             {/* Card Section */}
             <div className="w-full bg-black p-16">
                 {/* Filter Buttons */}
-                <FilterComponent />
+                {/*<FilterComponent />*/}
 
                 {/* Pass filtered itinerary cards to ItineraryCard */}
                 <ItineraryCard itineraryCards={filteredCards} />

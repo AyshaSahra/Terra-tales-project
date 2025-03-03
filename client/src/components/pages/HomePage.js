@@ -15,7 +15,7 @@ import HiddenCards from '../card.js/HiddenCard'
 export default function HomePage() {
     const [selected, setSelected] = useState(0);
     const navigate = useNavigate(); 
-    
+    const [likedCards, setLikedCards] = useState({});
     const [openEnterRaffle, setOpenEnterRaffle] = useState(false);
 
     const [openTicket, setOpenTicket] = useState(false);
@@ -47,6 +47,26 @@ export default function HomePage() {
       .then((result) => setData(result))
       .catch((err) => console.error(err));
   }, []);
+
+  const toggleLike = (cardId) => {
+    setLikedCards((prev) => {
+        const updatedLikes = { ...prev };
+
+        if (updatedLikes[cardId]) {
+            delete updatedLikes[cardId];
+        } else {
+            updatedLikes[cardId] = true; // Store only the ID, no need to store the full object
+        }
+
+        localStorage.setItem("likedDestinations", JSON.stringify(updatedLikes));
+        return updatedLikes;
+    });
+};
+
+useEffect(() => {
+    const savedLikes = JSON.parse(localStorage.getItem("likedDestinations")) || {};
+    setLikedCards(savedLikes);
+}, []);
 
     return (
         <>
@@ -94,12 +114,7 @@ export default function HomePage() {
                                     {/*Title 1*/} 
                                     {data[0]?.title || "Loading..."}
                                 </p>
-                                <img
-                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
-                                    alt="heart"
-                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
-                                    onClick={handleToggle}
-                                    />
+                                
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
@@ -134,12 +149,7 @@ export default function HomePage() {
                                     {/*Title 2*/}
                                     {data[1]?.title || "Loading..."}
                                 </p>
-                                <img
-                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
-                                    alt="heart"
-                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
-                                    onClick={handleToggle}
-                                    />
+                                
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
@@ -176,12 +186,7 @@ export default function HomePage() {
                                     {/*Title 3*/} 
                                     {data[2]?.title || "Loading..."}
                                 </p>
-                                <img
-                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
-                                    alt="heart"
-                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
-                                    onClick={handleToggle}
-                                    />
+                                
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
@@ -215,12 +220,7 @@ export default function HomePage() {
                                     {/*Title 4*/}
                                     {data[3]?.title || "Loading..."}
                                 </p>
-                                <img
-                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
-                                    alt="heart"
-                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
-                                    onClick={handleToggle}
-                                    />
+                            
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
@@ -257,12 +257,7 @@ export default function HomePage() {
                                     {/*Title 5*/}
                                     {data[4]?.title || "Loading..."}
                                 </p>
-                                <img
-                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
-                                    alt="heart"
-                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
-                                    onClick={handleToggle}
-                                    />
+                                
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>
@@ -296,12 +291,7 @@ export default function HomePage() {
                                     {/*Title 6*/} 
                                     {data[5]?.title || "Loading..."}
                                 </p>
-                                <img
-                                    src={isFilled ? assets.heartfill : assets.heart} // Toggle images
-                                    alt="heart"
-                                    className="w-6 h-6 ml-auto mx-2 cursor-pointer"
-                                    onClick={handleToggle}
-                                    />
+                                
                                 </div>
 
                                 <div className='flex flex-row h-fit w-full items-center px-1 pt-2'>

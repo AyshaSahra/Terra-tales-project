@@ -29,28 +29,6 @@ export default function HiddenSpot() {
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [filteredPlaces, setFilteredPlaces] = useState(placeData);
     const [searchQuery, setSearchQuery] = useState("");
-    const [searchResults, setSearchResults] = useState(null);
-
-    // ✅ Update search results when query changes
-    useEffect(() => {
-        if (searchQuery.trim() !== "") {
-            handleSearch();
-        } else {
-            setSearchResults(null);
-        }
-    }, [searchQuery]);
-
-    // ✅ API Call to Search Hidden Spots
-    const handleSearch = async () => {
-        try {
-            const response = await axios.get(
-                `http://localhost:5000/api/hidden-spots/search?query=${searchQuery}`
-            );
-            setSearchResults(response.data);
-        } catch (error) {
-            console.error("Error fetching search results:", error);
-        }
-    };
 
     const filterPlaces = (place) => {
         setSelectedCategory(place);
@@ -77,7 +55,7 @@ export default function HiddenSpot() {
                         placeholder='Search...'
                         className='p-3 w-full py-[16px] text-base px-5 font-mono rounded-[28px] focus:outline-none'
                     />
-                    <img src={assets.search} onClick={handleSearch} className='w-[30px] h-[30px] cursor-pointer' />
+                    <img src={assets.search} className='w-[30px] h-[30px] cursor-pointer' />
                 </div>    
             </div>
 
@@ -107,7 +85,7 @@ export default function HiddenSpot() {
                 </div>
 
                 {/* Dynamic Cards Component */}
-                <HiddenspotCard selectedCategory={selectedCategory} searchResults={searchResults} />
+                <HiddenspotCard selectedCategory={selectedCategory} searchQuery={searchQuery} />
             </div>
             
             <FooterElement />

@@ -4,118 +4,152 @@
     "location": "Chennai",
     "description": "One of the longest urban beaches in the world, famous for its scenic beauty and vibrant atmosphere.",
     "landingDescription": "Marina Beach offers golden sands, refreshing ocean breeze, vibrant street food, and mesmerizing sunrises. Enjoy horse rides, kite flying, and a lively atmosphere along the longest urban beach in India.",
-    "imageURL": "https://images.unsplash.com/photo-1570553305204-149983b3d081?q=80&w=2127&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1570553305204-149983b3d081?q=80&w=2127&auto=format&fit=crop",
+    "lat": 13.0500,
+    "lng": 80.2800
   },
   {
     "title": "Meenakshi Temple",
     "location": "Madurai",
     "description": "A historic Hindu temple known for its intricate architecture and vibrant sculptures.",
     "landingDescription": "Meenakshi Temple, with its towering gopurams, intricate sculptures, and divine aura, is a masterpiece of Dravidian architecture. Witness the spiritual grandeur, colorful rituals, and centuries-old traditions in this sacred sanctuary.",
-    "imageURL": "https://images.unsplash.com/photo-1633097572867-31d56bb54fae?q=80&w=1974&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1633097572867-31d56bb54fae?q=80&w=1974&auto=format&fit=crop",
+    "lat": 9.9195,
+    "lng": 78.1190
   },
   {
     "title": "Ooty Botanical Gardens",
     "location": "Ooty",
     "description": "A beautiful garden in the Nilgiris, known for its exotic plant species and scenic views.",
     "landingDescription": "Ooty Botanical Gardens showcases exotic plant species, vibrant flower beds, and serene walking trails. Enjoy the breathtaking landscape, explore rare flora, and experience the cool climate of this lush green paradise.",
-    "imageURL": "https://images.unsplash.com/photo-1559638058-f76874e942c8?q=80&w=1974&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1559638058-f76874e942c8?q=80&w=1974&auto=format&fit=crop",
+    "lat": 11.4154,
+    "lng": 76.6950
   },
   {
     "title": "Kanyakumari",
     "location": "Kanyakumari",
     "description": "The southernmost tip of India, known for its stunning sunrise and sunset views over the ocean.",
     "landingDescription": "Kanyakumari, where three oceans meet, offers breathtaking sunrises and sunsets, sacred temples, and cultural richness. Visit Vivekananda Rock Memorial and witness the beauty of the ocean's endless horizon.",
-    "imageURL": "https://images.unsplash.com/photo-1572886034137-b77ee990d594?q=80&w=1935&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1572886034137-b77ee990d594?q=80&w=1935&auto=format&fit=crop",
+    "lat": 8.0883,
+    "lng": 77.5385
   },
   {
     "title": "Brihadeeswarar Temple",
     "location": "Thanjavur",
     "description": "A UNESCO World Heritage Site, this temple is an architectural marvel built during the Chola dynasty.",
     "landingDescription": "The Brihadeeswarar Temple, a Chola-era architectural wonder, stands tall with its massive vimana, intricate carvings, and spiritual significance, making it a must-visit site for history and heritage lovers.",
-    "imageURL": "https://images.unsplash.com/photo-1566915947951-80554e585b1b?q=80&w=1972&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1566915947951-80554e585b1b?q=80&w=1972&auto=format&fit=crop",
+    "lat": 10.7828,
+    "lng": 79.1319
   },
   {
     "title": "Yercaud",
-    "location": "Yercaud",
+    "location": "Salem",
     "description": "A serene hill station known for its beautiful lake, coffee plantations, and pleasant climate.",
     "landingDescription": "Nestled in the Eastern Ghats, Yercaud offers misty hills, lush coffee plantations, and a tranquil lake. Perfect for nature lovers, it provides a peaceful escape from the bustling city life.",
-    "imageURL": "https://example.com/yercaud.jpg"
+    "imageURL": "https://images.unsplash.com/photo-1705219919758-fb6e7079bd09?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 11.7753,
+    "lng": 78.2090
   },
   {
     "title": "Rameswaram",
     "location": "Rameswaram",
     "description": "A sacred town known for its Ramanathaswamy Temple and the famous Pamban Bridge.",
     "landingDescription": "Rameswaram, a spiritual haven, boasts the sacred Ramanathaswamy Temple, stunning beaches, and the iconic Pamban Bridge. A perfect blend of devotion, history, and mesmerizing coastal beauty awaits every visitor.",
-    "imageURL": "https://images.unsplash.com/photo-1565195160611-251c9f88dc9c?q=80&w=1932&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1565195160611-251c9f88dc9c?q=80&w=1932&auto=format&fit=crop",
+    "lat": 9.2881,
+    "lng": 79.3129
   },
   {
     "title": "Kodaikanal",
     "location": "Kodaikanal",
     "description": "A popular hill station, often called the 'Princess of Hill Stations', famous for its misty valleys and Kodai Lake.",
     "landingDescription": "Kodaikanal, the 'Princess of Hill Stations,' captivates visitors with its mist-covered hills, scenic lakes, dense forests, and soothing climate. A paradise for adventure seekers, nature lovers, and honeymooners alike.",
-    "imageURL": "https://images.unsplash.com/photo-1570832764204-f209aa9cd28f?q=80&w=2070&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1570832764204-f209aa9cd28f?q=80&w=2070&auto=format&fit=crop",
+    "lat": 10.2381,
+    "lng": 77.4892
   },
   {
     "title": "Mahabalipuram",
     "location": "Mahabalipuram",
     "description": "A coastal town famous for its rock-cut temples, especially the Shore Temple and Arjuna's Penance.",
     "landingDescription": "Mahabalipuram showcases ancient rock-cut temples, including the Shore Temple and Arjuna’s Penance. Marvel at these UNESCO heritage sites, rich with artistic brilliance and cultural history, by the Bay of Bengal.",
-    "imageURL": "https://images.unsplash.com/photo-1576258735595-32977caf78c4?w=600&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1576258735595-32977caf78c4?w=600&auto=format&fit=crop",
+    "lat": 12.6208,
+    "lng": 80.1945
   },
   {
     "title": "Mudumalai National Park",
     "location": "Nilgiris",
     "description": "A wildlife sanctuary known for its rich biodiversity, including tigers, elephants, and leopards.",
     "landingDescription": "Mudumalai National Park is a haven for wildlife lovers, featuring diverse flora and fauna, including majestic tigers and elephants. Enjoy thrilling safaris amidst lush forests and picturesque landscapes.",
-    "imageURL": "https://images.unsplash.com/photo-1564845926814-d8c30466f9b0?w=600&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1564845926814-d8c30466f9b0?w=600&auto=format&fit=crop",
+    "lat": 11.5833,
+    "lng": 76.5667
   },
   {
     "title": "Light House",
     "location": "Chennai",
-    "description": "A historic Chola dynasty temple known for its grand architecture and intricate carvings.",
+    "description": "A historic lighthouse offering panoramic views of the coastline.",
     "landingDescription": "The Chennai Lighthouse stands tall, offering panoramic views of the coastline. A perfect spot for photography, sunset lovers, and history enthusiasts, this landmark adds charm to Marina Beach’s skyline.",
-    "imageURL": "https://images.unsplash.com/photo-1725019126595-bc271fdaea4b?q=80&w=2020&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1725019126595-bc271fdaea4b?q=80&w=2020&auto=format&fit=crop",
+    "lat": 13.0350,
+    "lng": 80.2824
   },
   {
     "title": "Pichavaram Mangrove Forest",
     "location": "Pichavaram",
     "description": "One of the largest mangrove forests in India, offering boat rides through scenic waterways.",
     "landingDescription": "Pichavaram Mangrove Forest is an ecological wonder with dense greenery and tranquil waters. Take a boat ride through the winding canals and witness an untouched paradise teeming with diverse wildlife.",
-    "imageURL": "https://images.unsplash.com/photo-1661707745074-7ac649196b26?q=80&w=2127&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1661707745074-7ac649196b26?q=80&w=2127&auto=format&fit=crop",
+    "lat": 11.4283,
+    "lng": 79.7734
   },
   {
     "title": "Vellore Fort",
     "location": "Vellore",
     "description": "A 16th-century fort known for its unique structure, grand moat, and Jalakandeswarar Temple inside.",
     "landingDescription": "Vellore Fort, a 16th-century marvel, boasts a massive moat, ancient temples, and rich history. Its architectural brilliance and strategic importance make it a must-visit site for history enthusiasts.",
-    "imageURL": "https://images.unsplash.com/photo-1665003739938-b7fa7c1c1bfc?q=80&w=1936&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1665003739938-b7fa7c1c1bfc?q=80&w=1936&auto=format&fit=crop",
+    "lat": 12.9165,
+    "lng": 79.1325
   },
   {
     "title": "Kapaleeshwarar Temple",
     "location": "Chennai",
     "description": "A historic Dravidian-style temple dedicated to Lord Shiva, known for its intricate carvings and spiritual ambiance.",
     "landingDescription": "Kapaleeshwarar Temple is an architectural marvel with a towering gopuram, rich traditions, and a peaceful atmosphere, offering an insight into Chennai’s cultural heritage.",
-    "imageURL": "https://images.unsplash.com/photo-1606611616456-6a5d7e9f5a4c?q=80&w=2127&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1606611616456-6a5d7e9f5a4c?q=80&w=2127&auto=format&fit=crop",
+    "lat": 13.0337,
+    "lng": 80.2689
   },
   {
     "title": "Santhome Basilica",
     "location": "Chennai",
     "description": "A neo-Gothic church built over the tomb of St. Thomas, one of Jesus' apostles, offering a serene and historical experience.",
     "landingDescription": "Santhome Basilica is a stunning white church with historic significance, peaceful ambiance, and breathtaking interiors, attracting visitors seeking spirituality and history.",
-    "imageURL": "https://images.unsplash.com/photo-1642954408085-9cb31edb88b5?q=80&w=2127&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1642954408085-9cb31edb88b5?q=80&w=2127&auto=format&fit=crop",
+    "lat": 13.0331,
+    "lng": 80.2744
   },
   {
     "title": "Valluvar Kottam",
     "location": "Chennai",
     "description": "A monument dedicated to Tamil poet Thiruvalluvar, featuring a grand chariot structure and inscriptions from the Tirukkural.",
     "landingDescription": "Valluvar Kottam stands as a tribute to Tamil literature, with intricate architecture, peaceful surroundings, and a massive stone chariot honoring the legendary poet.",
-    "imageURL": "https://images.unsplash.com/photo-1598721734904-079fa984a13c?q=80&w=2127&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1598721734904-079fa984a13c?q=80&w=2127&auto=format&fit=crop",
+    "lat": 13.0604,
+    "lng": 80.2422
   },
   {
     "title": "Guindy National Park",
     "location": "Chennai",
     "description": "A lush green wildlife sanctuary in the heart of Chennai, home to deer, blackbucks, and various bird species.",
     "landingDescription": "Guindy National Park is a peaceful green escape in the city, offering scenic trails, rich biodiversity, and a chance to experience nature amid urban life.",
-    "imageURL": "https://images.unsplash.com/photo-1601066475440-77cbe6c28f0e?q=80&w=2127&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1601066475440-77cbe6c28f0e?q=80&w=2127&auto=format&fit=crop",
+    "lat": 13.0059,
+    "lng": 80.2212
   }
 ]

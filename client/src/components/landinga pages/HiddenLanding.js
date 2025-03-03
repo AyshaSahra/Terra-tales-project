@@ -180,7 +180,7 @@ useEffect(() => {
                     </div>
                 </div>
                 <div className='w-full h-fit items-center justify-center flex' style={{ flex:0.3 }}>
-                    <GoogleMapComponent/>
+                <GoogleMapComponent lat={destination.lat} lng={destination.lng} />
                 </div>
             </div>
 
