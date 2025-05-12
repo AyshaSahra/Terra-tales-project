@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
-import HiddenspotCard from '../card.js/HiddenspotsCard';
+import HiddenspotCard from '../cards/HiddenspotsCard';
 import assets from '../../constants/assets';
 
 const places = [

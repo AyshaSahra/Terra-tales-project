@@ -4,7 +4,7 @@ import axios from 'axios';
 import assets from '../../constants/assets';
 import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
-import HiddenCards from '../card.js/HiddenCard';
+import HiddenCards from '../cards/HiddenCard';
 import GoogleMapComponent from '../weather/GoogleMapComponent';
 
 const API_KEY = "6adf2d4e190d475faa760039252802";

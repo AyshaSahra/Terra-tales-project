@@ -26,11 +26,11 @@ const Card = mongoose.model('Card', cardSchema, 'cards');
 
 // ✅ Define Itinerary Card Schema
 const itineraryCardSchema = new mongoose.Schema({
-    title: { type: String, required: true },  // Itinerary title
-    location: { type: String, required: true },  // Itinerary location
-    text: { type: String, required: true },  // Description of the itinerary
-    src: { type: String, required: true },  // Main image URL for itinerary
-    days: [{ type: String, required: true }],  // Just store the list of days (e.g., "Day 1", "Day 2")
+    title: { type: String, required: true },
+    location: { type: String, required: true },
+    text: { type: String, required: true },
+    src: { type: String, required: true },
+    days: [{ type: String, required: true }],
 });
 const ItineraryCard = mongoose.model('ItineraryCard', itineraryCardSchema, 'itinerary-cards');
 
@@ -45,7 +45,48 @@ const hiddenSpotSchema = new mongoose.Schema({
 });
 const HiddenSpot = mongoose.model('HiddenSpot', hiddenSpotSchema, 'hidden-spots');
 
-// ✅ API Endpoint to Get Cards
+// ✅ Define Subscriber Schema (New for Newsletter)
+const subscriberSchema = new mongoose.Schema({
+    email: { type: String, required: true, unique: true }
+});
+const Subscriber = mongoose.model('Subscriber', subscriberSchema, 'subscribers');
+
+// ✅ API Endpoint for Newsletter Subscription
+app.post('/api/subscribe', async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+    }
+
+    try {
+        const exists = await Subscriber.findOne({ email });
+        if (exists) {
+            return res.status(400).json({ message: "Email already subscribed!" });
+        }
+
+        const newSubscriber = new Subscriber({ email });
+        await newSubscriber.save();
+        console.log("✅ New subscriber added:", email);
+        res.json({ message: "Subscription successful!" });
+    } catch (error) {
+        console.error("❌ Error saving subscriber:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// ✅ API Endpoint to Get All Subscribers (Optional for Debugging)
+app.get('/api/subscribers', async (req, res) => {
+    try {
+        const subscribers = await Subscriber.find();
+        res.json(subscribers);
+    } catch (error) {
+        console.error("Error fetching subscribers:", error);
+        res.status(500).json({ message: "Error fetching subscribers" });
+    }
+});
+
+// ✅ Existing API Endpoints (No Changes Below This Line)
 app.get('/api/cards', async (req, res) => {
     try {
         const cards = await Card.find();
@@ -55,7 +96,6 @@ app.get('/api/cards', async (req, res) => {
     }
 });
 
-// ✅ API Endpoint to Get Itinerary Cards
 app.get('/api/itinerary-cards', async (req, res) => {
     try {
         const itineraryCards = await ItineraryCard.find();
@@ -65,7 +105,6 @@ app.get('/api/itinerary-cards', async (req, res) => {
     }
 });
 
-// ✅ API Endpoint to Search Cards by Title or Location
 app.get('/api/cards/search', async (req, res) => {
     const { query } = req.query;
     if (!query) {
@@ -90,7 +129,7 @@ app.get('/api/cards/search', async (req, res) => {
 app.get('/api/cards/:id', async (req, res) => {
     try {
         const cardId = req.params.id;
-        const card = await Card.findById(cardId);  // Ensure this uses your MongoDB model
+        const card = await Card.findById(cardId);
 
         if (!card) {
             return res.status(404).json({ message: "Destination not found" });
@@ -103,7 +142,6 @@ app.get('/api/cards/:id', async (req, res) => {
     }
 });
 
-// ✅ API Endpoint to Get a Hidden Spot by ID
 app.get('/api/hidden-spots/:id', async (req, res) => {
     try {
         const hiddenSpot = await HiddenSpot.findById(req.params.id);
@@ -117,7 +155,6 @@ app.get('/api/hidden-spots/:id', async (req, res) => {
     }
 });
 
-// ✅ API Endpoint to Search Hidden Spots
 app.get('/api/hidden-spots/search', async (req, res) => {
     const { query } = req.query;
     if (!query) {
@@ -152,10 +189,6 @@ app.get('/api/itinerary-cards/:id', async (req, res) => {
     }
 });
 
-
-
-
-// ✅ API Endpoint to Get Hidden Spots
 app.get('/api/hidden-spots', async (req, res) => {
     try {
         const hiddenSpots = await HiddenSpot.find();

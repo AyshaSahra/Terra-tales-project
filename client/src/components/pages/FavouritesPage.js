@@ -4,7 +4,7 @@ import FooterElement from '../footer/FooterElement';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import assets from '../../constants/assets';
-import ExampleCard from '../card.js/ExtendableCard';
+import ExampleCard from '../cards/ExtendableCard';
 import axios from 'axios';
 
 

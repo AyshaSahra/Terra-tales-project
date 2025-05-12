@@ -5,15 +5,36 @@ import FooterElement from '../footer/FooterElement';
 import assets from '../../constants/assets';
 import { useNavigate } from 'react-router-dom';
 import cards from '../../constants/cards';
-import FilterComponent from '../card.js/FilterComponent';
-import HiddenCards from '../card.js/HiddenCard';
-import ItineraryCard from '../card.js/ItineraryCard';
-import HiddenCard from '../card.js/HiddenCard';
+import FilterComponent from '../cards/FilterComponent';
+import HiddenCards from '../cards/HiddenCard';
+import ItineraryCard from '../cards/ItineraryCard';
+import HiddenCard from '../cards/HiddenCard';
 
 export default function ItineraryPage() {
     const navigate = useNavigate();
     const [itineraryCards, setItineraryCards] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedFilters, setSelectedFilters] = useState({
+    Region: [],
+    Interest: [],
+    Days: ""
+  });
+
+  // Handle selection of filters
+  const handleSelection = (category, option) => {
+    setSelectedFilters((prev) => {
+      if (category === "Days") {
+        return { ...prev, [category]: prev[category] === option ? "" : option };
+      }
+      const isSelected = prev[category].includes(option);
+      return {
+        ...prev,
+        [category]: isSelected
+          ? prev[category].filter((item) => item !== option)
+          : [...prev[category], option]
+      };
+    });
+  };
 
     // Fetch itinerary cards from MongoDB
     useEffect(() => {
@@ -58,9 +79,6 @@ export default function ItineraryPage() {
 
             {/* Card Section */}
             <div className="w-full bg-black p-16">
-                {/* Filter Buttons */}
-                {/*<FilterComponent />*/}
-
                 {/* Pass filtered itinerary cards to ItineraryCard */}
                 <ItineraryCard itineraryCards={filteredCards} />
             </div>

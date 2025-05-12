@@ -1,5 +1,6 @@
 import assets from "../../constants/assets";
 import { useNavigate } from "react-router-dom";
+import Newsletter from "../weather/Newsletter";
 
 export default function FooterElement() {
     const navigate = useNavigate();
@@ -11,6 +12,9 @@ export default function FooterElement() {
                         <a onClick={() => navigate("/")}>
                             <img src={assets.logo} className='w-[160px]'/>
                         </a>
+                    </ul>
+                    <ul className="pl-5 w-1/4">
+                    <Newsletter/>
                     </ul>
                     {/*Footer options*/}
                   <ul className="flex flex-row items-center gap-9 pr-5">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const filters = ["Region", "Interest", "Days"];
 const filterOptions = {
@@ -7,31 +7,12 @@ const filterOptions = {
   Days: ["1 day", "2 days", "3 days", "4 days"]
 };
 
-const FilterComponent = () => {
-  const [openFilter, setOpenFilter] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState({
-    Region: [],
-    Interest: [],
-    Days: ""
-  });
+const FilterComponent = ({ selectedFilters, handleSelection }) => {
+  const [openFilter, setOpenFilter] = React.useState(null);
 
+  // Toggle filter dropdown
   const toggleFilter = (filter) => {
     setOpenFilter(openFilter === filter ? null : filter);
-  };
-
-  const handleSelection = (category, option) => {
-    setSelectedFilters((prev) => {
-      if (category === "Days") {
-        return { ...prev, [category]: prev[category] === option ? "" : option };
-      }
-      const isSelected = prev[category].includes(option);
-      return {
-        ...prev,
-        [category]: isSelected
-          ? prev[category].filter((item) => item !== option)
-          : [...prev[category], option]
-      };
-    });
   };
 
   return (
@@ -52,7 +33,11 @@ const FilterComponent = () => {
                     <input
                       type={filter === "Days" ? "radio" : "checkbox"}
                       name={filter === "Days" ? "days" : undefined}
-                      checked={filter === "Days" ? selectedFilters[filter] === option : selectedFilters[filter].includes(option)}
+                      checked={
+                        filter === "Days"
+                          ? selectedFilters[filter] === option
+                          : selectedFilters[filter].includes(option)
+                      }
                       onChange={() => handleSelection(filter, option)}
                       className="mr-2"
                     />

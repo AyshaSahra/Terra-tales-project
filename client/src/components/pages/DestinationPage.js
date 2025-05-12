@@ -5,8 +5,8 @@ import NavBar from "../navbar/NavBar";
 import FooterElement from "../footer/FooterElement";
 import assets from "../../constants/assets";
 import cards from "../../constants/cards";
-import CardComponent from "../card.js/CardComponent";
-import HiddenCards from "../card.js/HiddenCard";
+import CardComponent from "../cards/CardComponent";
+import HiddenCards from "../cards/HiddenCard";
 
 export const placeData = [
   { id: 1, name: "Chennai", image: "/assets/chennai.jpg" },

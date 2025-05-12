@@ -4,7 +4,7 @@ import NavBar from '../navbar/NavBar';
 import FooterElement from '../footer/FooterElement';
 import cards from '../../constants/cards';
 import { useNavigate } from 'react-router-dom';
-import HiddenCard from '../card.js/HiddenCard';
+import HiddenCard from '../cards/HiddenCard';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 

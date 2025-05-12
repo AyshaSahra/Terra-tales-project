@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../navbar/NavBar'
 import assets from '../../constants/assets'
 import FooterElement from '../footer/FooterElement'
-import ExampleCard from '../card.js/ExtendableCard'
+import ExampleCard from '../cards/ExtendableCard'
 import { useState,useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'
@@ -10,7 +10,7 @@ import cards from '../../constants/cards'
 import ProfileView from '../profile/ProfileView'
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
-import HiddenCards from '../card.js/HiddenCard'
+import HiddenCards from '../cards/HiddenCard'
 
 export default function HomePage() {
     const [selected, setSelected] = useState(0);
